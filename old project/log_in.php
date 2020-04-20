@@ -10,7 +10,7 @@ $query = "SELECT * FROM site_users WHERE username='$username'";
 $result = pg_query($db_connection, $query);
 
 if (! $result) {
-    header('Location: bad_login.html');
+    header('Location: index.html');
 }
 
 $row = pg_fetch_row($result);
