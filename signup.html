@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>Sign Up - HooCooks</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="index.html">HooSched</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="login.html">Log In</a></li>
+					<li><a href="signup.html" class="button">Sign Up</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Main -->
+		<section id="main" class="container medium">
+			<header>
+				<h2>Sign Up</h2>
+			</header>
+			<div class="box">
+				<form method="post" action="signup.php">
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6 col-12-mobilep">
+							<input type="text" name="first_name" id="first_name"
+								pattern="[A-Za-z' ]+" value="" placeholder="First Name" required />
+							<p>Can contain letters apostrophes and spaces</p>
+						</div>
+						<div class="col-6 col-12-mobilep">
+							<input type="text" name="last_name" id="last_name"
+								pattern="[A-Za-z' ]+" value="" placeholder="Last Name" required />
+							<p>Can contain letters apostrophes and spaces</p>
+						</div>
+						<div class="col-6 col-12-mobilep">
+							<input type="text" name="username" id="username"
+								pattern="[A-Za-z0-9_]+" value="" placeholder="Username" required />
+								<p>Can contain letters and numbers</p>
+						</div>
+						<div class="col-6 col-12-mobilep">
+							<input type="password" name="password" id="password"
+								pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value=""
+								placeholder="Password" required />
+								<p>Combination of at least 8 letters, numbers, and symbols</p>
+						</div>
+						<div class="col-6 col-12-mobilep">
+							<input type="password" name="confirm password"
+								id="confirm_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="" placeholder="Confirm Password"
+								required />
+								<p>Confirm your password</p>
+						</div>
+						<!-- code for password confirmation retrieved from https://codepen.io/diegoleme/pen/surIK -->
+						<script>
+							var password = document.getElementById("password"), confirm_password = document
+									.getElementById("confirm_password");
+
+							function validatePassword() {
+								if (password.value != confirm_password.value) {
+									confirm_password
+											.setCustomValidity("Passwords Don't Match");
+								} else {
+									confirm_password.setCustomValidity('');
+								}
+							}
+
+							password.onchange = validatePassword;
+							confirm_password.onkeyup = validatePassword;
+						</script>
+						<div class="col-12">
+							<ul class="actions special">
+								<li><input type="submit" value="Submit" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span
+						class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span
+						class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span
+						class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon brands fa-github"><span
+						class="label">Github</span></a></li>
+				<li><a href="#" class="icon brands fa-dribbble"><span
+						class="label">Dribbble</span></a></li>
+				<li><a href="#" class="icon brands fa-google-plus"><span
+						class="label">Google+</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; HooSched. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+</html>
