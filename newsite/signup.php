@@ -6,6 +6,7 @@ $db_connection = pg_connect("ec2-52-71-231-180.compute-1.amazonaws.com
 ");
 if(!$db_connection){
 	echo "<p>Could not connect to the server '" . $hostname . "'</p>\n";
+	header('Location: index.html');
 }
 $username = $_POST['username'];
 //$email = $_POST['email'];
@@ -25,14 +26,19 @@ $user = pg_fetch_assoc($result);
 
 if(!$user) {//if nothing comes back, then insert
     $query_1 = "INSERT INTO site_users VALUES('$first_name','$last_name','$username','$hashed_password')";
-    $result_1 = pg_query($db_connection,$query_1);
-    
-    $_SESSION['username'] = $username;
-   // $_SESSION['email'] = $email;
-    $_SESSION['logged_in'] = "logged_in";
-    
-    //change to homepage for members
-    header('Location: calendar.html');
+	$result_1 = pg_query($db_connection,$query_1);
+	if($result_1){
+		$_SESSION['username'] = $username;
+		// $_SESSION['email'] = $email;
+		$_SESSION['logged_in'] = "logged_in";
+		
+		//change to homepage for members
+		header('Location: calendar.html');
+	}
+	else{
+		header('Location: index.html');
+	}
+   
 }else{
     header('Location: index.html');
 }
