@@ -19,12 +19,12 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 
-$query = "SELECT* FROM site_users WHERE username='$username'";
-$result = pg_query($db_connection,$query);
-$user = pg_fetch_assoc($result);
+//$query = "SELECT* FROM site_users WHERE username='$username'";
+//$result = pg_query($db_connection,$query);
+//$user = pg_fetch_assoc($result);
 
 
-if(!$user) {//if nothing comes back, then insert
+//if(!$user) {//if nothing comes back, then insert
     $query_1 = "INSERT INTO site_users VALUES('$first_name','$last_name','$username','$hashed_password')";
 	$result_1 = pg_query($db_connection,$query_1);
 	if($result_1){
@@ -39,9 +39,9 @@ if(!$user) {//if nothing comes back, then insert
 		header('Location: index.html');
 	}
    
-}else{
-    header('Location: index.html');
-}
+//}else{
+  //  header('Location: index.html');
+//}
 
 
 
