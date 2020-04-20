@@ -8,16 +8,20 @@ if(!$db_connection){
 	echo "<p>Could not connect to the server '" . $hostname . "'</p>\n";
 	header('Location: login.html');//need to change this later
 }
-$username = $_POST['username'];
+//$username = $_POST['username'];
+$username = "jp4dr";
+$password = "@Jbperr98";
 //$email = $_POST['email'];
 //$address = $_POST['address'];
-$password = $_POST['password'];
+//$password = $_POST['password'];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 //$city = $_POST['city'];
 //$zip = $_POST['zip'];
 //$state = $_POST['state'];
-$first_name = $_POST['first_name'];
-$last_name = $_POST['last_name'];
+//$first_name = $_POST['first_name'];
+//$last_name = $_POST['last_name'];
+$first_name = "James";
+$last_name = "Perry";
 
 $query = "SELECT* FROM site_users WHERE username='$username'";
 $result = pg_query($db_connection,$query);
