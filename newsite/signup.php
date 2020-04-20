@@ -4,6 +4,9 @@ session_start();
 $db_connection = pg_connect("ec2-52-71-231-180.compute-1.amazonaws.com
  port=5432 dbname=d5g84sufgsvitc user=elybocxzzsvtjp password=7611f8ff31e698d42a0571c4a27b74f3bc83034ce58321bd5291711b7516aca7
 ");
+if(!$db_connection){
+	echo "<p>Could not connect to the server '" . $hostname . "'</p>\n";
+}
 $username = $_POST['username'];
 //$email = $_POST['email'];
 //$address = $_POST['address'];
@@ -20,7 +23,7 @@ $result = pg_query($db_connection,$query);
 $user = pg_fetch_assoc($result);
 
 
-if(!$user) {
+if(!$user) {//if nothing comes back, then insert
     $query_1 = "INSERT INTO site_users VALUES('$first_name','$last_name','$username','$hashed_password')";
     $result_1 = pg_query($db_connection,$query_1);
     
