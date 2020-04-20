@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$db_connection = pg_connect("ec2-52-71-231-180.compute-1.amazonaws.com
+$db_connection = pg_connect("host=ec2-52-71-231-180.compute-1.amazonaws.com
  port=5432 dbname=d5g84sufgsvitc user=elybocxzzsvtjp password=7611f8ff31e698d42a0571c4a27b74f3bc83034ce58321bd5291711b7516aca7
 ");
 if(!$db_connection){
