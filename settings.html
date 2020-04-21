@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>Settings - HooSched</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<script>
+	var FormStuff = {
+  
+  init: function() {
+    this.applyConditionalRequired();
+    this.bindUIActions();
+  },
+  
+  bindUIActions: function() {
+    $("input[type='radio'], input[type='checkbox']").on("change", this.applyConditionalRequired);
+  },
+  
+  applyConditionalRequired: function() {
+    
+    $(".require-if-active").each(function() {
+      var el = $(this);
+      if ($(el.data("require-pair")).is(":checked")) {
+        el.prop("required", true);
+      } else {
+        el.prop("required", false);
+      }
+    });
+    
+  }
+  
+};
+
+FormStuff.init();
+</script>
+
+<style>
+	.reveal-if-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 16px;
+  transform: scale(0.8);
+  transition: 0.5s;
+  
+  label {
+    display: block;
+    margin: 0 0 3px 0;
+  }
+  input[type=text] {
+    width: 100%;
+  }
+  
+  input[type="radio"]:checked ~ &,
+  input[type="checkbox"]:checked ~ & {
+    opacity: 1;
+    max-height: 100px;
+    padding: 10px 20px;
+    transform: scale(1);
+    overflow: visible;
+  }
+  
+}
+
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  > div {
+    margin: 0 0 20px 0;
+    label {
+      font-weight: bold;
+    }
+    > div {
+      padding: 5px;
+    }
+  }
+  > h4 {
+    color: green;
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    border-bottom: 2px solid green;
+  }
+}
+
+body {
+  font-size: 20px;
+}
+* {
+  box-sizing: border-box;
+}
+</style>
+<body class="is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="index.html">HooSched</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="login.html">Log In</a></li>
+					<li><a href="signup.html" class="button">Sign Up</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<section id="main" class="container medium">
+			<header>
+				<h2>Sign Up</h2>
+			</header>
+			<div class="box">
+			<form method="post" action="settings.php">
+  
+				<h4>Admin or Student?</h4>
+				<div>
+					<div>
+					<input type="radio" name="choice-type" id="choice-student" required>
+					<label for="choice-student">Student</label>
+					
+					<div class="reveal-if-active">
+						<label for="school">What School do you attend?</label>
+						<input type="text" id="school" name="school" class="require-if-active" data-require-pair="#choice-student">
+					</div>
+					</div>
+					
+					<div>
+					<input type="radio" name="choice-type" id="choice-admin">
+					<label for="choice-admin">Admin</label>
+					
+					<div class="reveal-if-active">
+						<label for="org_ID">What organization are you admin of?</label>
+						<input type="text" id="org_ID" name="org_ID" class="require-if-active" data-require-pair="#choice-admin">
+					</div>
+					</div>
+				</div>
+				<div>
+					<input type="submit" value="Submit">
+				</div>
+					
+				</form>
+			</div>
+		</section>
+
+		
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span
+						class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span
+						class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span
+						class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon brands fa-github"><span
+						class="label">Github</span></a></li>
+				<li><a href="#" class="icon brands fa-dribbble"><span
+						class="label">Dribbble</span></a></li>
+				<li><a href="#" class="icon brands fa-google-plus"><span
+						class="label">Google+</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; HooSched. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+</html>
