@@ -11,9 +11,23 @@
 $(document).ready(function () {
     var calendar = $('#calendar').fullCalendar({
 		header: {
-		  left: 'prev,next today',
+		  left: 'prev,next today filterButton',
 		  center: 'title',
-		  right: 'month,agendaWeek,agendaDay'
+		  right: 'exportButton month,agendaWeek,agendaDay'
+		},
+		customButtons: {
+			exportButton: {
+			  text: 'export',
+			  click: function() {
+				alert('this should export calendar data');
+			  }
+			},
+			filterButton: {
+			  text: 'add',
+			  click: function(event, jsEvent, view) {
+				window.location.href = 'add_event.html';
+			  }
+			}
 		},
         editable: true,
         events: "fetch-event.php",
@@ -100,6 +114,13 @@ body {
   padding: 0;
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   font-size: 14px;
+  color: 0;
+}
+
+h2 {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 /* Header */
@@ -408,9 +429,14 @@ body {
 				</ul>
 			</nav>
 	</header>
-
+	
     <div class="response"></div>
-    <div id='calendar'></div>
+	
+	<h4>Usage instructions: you can click on calendar to add/delete events for now, but that will change soon</h4>
+	<p>See rescalendar.html JavaScript code for relevant php files (explained below)
+	<p>db.php: connect the database, fetch-event.php: loads the events, add-event.php: adds event, edit-event.php: updates event, delete-event.php: deletes event<p>
+ 
+	<div id='calendar'></div>
 </body>
 
 
