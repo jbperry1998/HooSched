@@ -29,7 +29,7 @@ if(!$user) {
     $_SESSION['logged_in'] = "logged_in";
     
     //change to homepage for members
-    header('Location: calendar.html');
+    header('Location: settings.html');
 }else{
     header('Location: index.html');
 }
