@@ -29,7 +29,7 @@
 
 		
 
-		if(isset($school)){
+		if(isset($school_name)){
 			//insert username and school into students table
 			$query_1 = "INSERT INTO extracurricular VALUES('$event_ID','$user_ID','$school_name','$location')";
     		$result_1 = pg_query($db_connection,$query_1);
