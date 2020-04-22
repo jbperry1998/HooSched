@@ -7,7 +7,7 @@
 		if (! strcmp($login_status, "logged_in") == 0) {
 			header('Location: elements.html');
 		}
-		$username = $_SESSION['username'];
+		$user_ID = $_SESSION['username'];
 		// $name = $_SESSION['name'];
 
 		$event_ID = $_POST['event_ID'];
@@ -31,15 +31,17 @@
 
 		if(isset($school)){
 			//insert username and school into students table
-			$query_1 = "INSERT INTO Extracurricular VALUES('$event_ID','$username','$school','$location')";
+			$query_1 = "INSERT INTO Extracurricular VALUES('$event_ID','$user_ID','$school','$location')";
     		$result_1 = pg_query($db_connection,$query_1);
 		}
 		if(isset($size)){
-			$query_2 = "INSERT INTO Community VALUES('$event_ID','$username','$owner_ID','$size','$venue')";
+			$query_2 = "INSERT INTO Community VALUES('$event_ID','$user_ID','$owner_ID','$size','$venue')";
     		$result_2 = pg_query($db_connection,$query_2);
 		}
-		$query = "INSERT INTO Event VALUES('$event_ID','$username','$name','$date','$description','$frequency','$start_time','$end_time')";
-		$result = pq_query($db_connection, $query);
+		$query = "INSERT INTO Event VALUES('$event_ID','$user_ID','$name','$date','$description','$frequency','$start_time','$end_time')";
+		$result = pg_query($db_connection, $query);
+		$query_3 = "INSERT INTO Makes VALUES('$user_ID','$event_ID')";
+		$result_3 = pg_query($db_connection, $query_3);
 		header('Location: calendar.html');
 
 ?>
