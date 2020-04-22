@@ -15,7 +15,7 @@
 
 		if(isset($school)){
 			//insert username and school into students table
-			$query_1 = "INSERT INTO student VALUES('$userName','$school')";
+			$query_1 = "INSERT INTO student VALUES('$user_ID','$school')";
 			$result_1 = pg_query($db_connection,$query_1);
 			if(result_1){
 				header('Location: calendar.html');
@@ -24,7 +24,7 @@
 
 		}
 		if(isset($org_ID)){
-			$query_2 = "INSERT INTO admin VALUES('$org_ID','$userName')";
+			$query_2 = "INSERT INTO admin VALUES('$org_ID','$user_ID')";
 			$result_2 = pg_query($db_connection,$query_2);
 			if(result_2){
 				header('Location: calendar.html');
