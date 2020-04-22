@@ -15,13 +15,13 @@
 
 		if(isset($school)){
 			//insert username and school into students table
-			$query_1 = "INSERT INTO Student VALUES('$user_ID','$school')";
+			$query_1 = "INSERT INTO Student VALUES('$userName','$school')";
 			$result_1 = pg_query($db_connection,$query_1);
 			header('Location: calendar.html');
 
 		}
 		if(isset($org_ID)){
-			$query_2 = "INSERT INTO Admin VALUES('$org_ID','$user_ID')";
+			$query_2 = "INSERT INTO Admin VALUES('$org_ID','$userName')";
 			$result_2 = pg_query($db_connection,$query_2);
 			header('Location: calendar.html');
 		}

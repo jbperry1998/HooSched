@@ -19,7 +19,7 @@
 		$frequency = $_POST['frequency'];
 
 		//extracurricular
-		$school = $_POST['school'];
+		$school_name = $_POST['school'];
 		$location = $_POST['location'];
 
 		//comunity
@@ -31,7 +31,7 @@
 
 		if(isset($school)){
 			//insert username and school into students table
-			$query_1 = "INSERT INTO Extracurricular VALUES('$event_ID','$user_ID','$school','$location')";
+			$query_1 = "INSERT INTO Extracurricular VALUES('$event_ID','$user_ID','$school_name','$location')";
     		$result_1 = pg_query($db_connection,$query_1);
 		}
 		if(isset($size)){
