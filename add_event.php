@@ -13,8 +13,11 @@
 		$event_ID = $_POST['event_ID'];
 		$name = $_POST['name'];
 		$start_time = $_POST['start_time'];
+		$start = date("H,i,s",$start_time);
 		$end_time = $_POST['end_time'];
+		$end = date("H,i,s",$start_time);
 		$date = $_POSt['date'];
+		$start_date = date('yyyy-mm-dd', $date);
 		$description = $_POST['description'];
 		$frequency = $_POST['frequency'];
 
@@ -38,7 +41,7 @@
 			$query_2 = "INSERT INTO community VALUES('$event_ID','$user_ID','$owner_ID','$size','$venue')";
     		$result_2 = pg_query($db_connection,$query_2);
 		}
-		$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$date','$description','$frequency','$start_time','$end_time')";
+		$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start_time','$end_time')";
 		$result = pg_query($db_connection, $query);
 		$query_3 = "INSERT INTO makes VALUES('$user_ID','$event_ID')";
 		$result_3 = pg_query($db_connection, $query_3);
