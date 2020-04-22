@@ -31,16 +31,16 @@
 
 		if(isset($school)){
 			//insert username and school into students table
-			$query_1 = "INSERT INTO Extracurricular VALUES('$event_ID','$user_ID','$school_name','$location')";
+			$query_1 = "INSERT INTO extracurricular VALUES('$event_ID','$user_ID','$school_name','$location')";
     		$result_1 = pg_query($db_connection,$query_1);
 		}
 		if(isset($size)){
-			$query_2 = "INSERT INTO Community VALUES('$event_ID','$user_ID','$owner_ID','$size','$venue')";
+			$query_2 = "INSERT INTO community VALUES('$event_ID','$user_ID','$owner_ID','$size','$venue')";
     		$result_2 = pg_query($db_connection,$query_2);
 		}
-		$query = "INSERT INTO Event VALUES('$event_ID','$user_ID','$name','$date','$description','$frequency','$start_time','$end_time')";
+		$query = "INSERT INTO event VALUES('$event_ID','$user_ID','$name','$date','$description','$frequency','$start_time','$end_time')";
 		$result = pg_query($db_connection, $query);
-		$query_3 = "INSERT INTO Makes VALUES('$user_ID','$event_ID')";
+		$query_3 = "INSERT INTO makes VALUES('$user_ID','$event_ID')";
 		$result_3 = pg_query($db_connection, $query_3);
 		header('Location: calendar.html');
 
