@@ -27,7 +27,7 @@
 			$query_2 = "INSERT INTO admin VALUES('$org_ID','$user_ID')";
 			$result_2 = pg_query($db_connection,$query_2);
 			if(result_2){
-				header('Location: calendar.html');
+				header('Location: rescalendar.html');
 			}
 		}
 		else{

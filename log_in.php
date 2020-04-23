@@ -20,7 +20,7 @@ if (password_verify($password, $hp)) {
     $_SESSION['logged_in'] = "logged_in";
 
     // change to homepage for members
-    header('Location: calendar.html');
+    header('Location: rescalendar.html');
 } else {
     echo $hp;
     echo "\n";

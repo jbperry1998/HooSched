@@ -52,6 +52,6 @@
 		$result = pg_query($db_connection, $query);
 		$query_3 = "INSERT INTO makes VALUES('$user_ID','$event_ID')";
 		$result_3 = pg_query($db_connection, $query_3);
-		header('Location: calendar.html');
+		header('Location: rescalendar.html');
 
 ?>
