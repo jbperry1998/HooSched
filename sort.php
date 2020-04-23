@@ -12,21 +12,5 @@ if(isset($_POST['valueToSort']))
 $query = "SELECT * FROM `event` ORDER BY `event_ID`";
 //if($result = mysqli_query($link, $sql)){
 $result = pg_query($connect,$query);
-//check if result isn't null
-    if(pg_num_rows($result) > 0){
-        while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){ //printing sorted table
-            echo "<tr>";
-		//table info
-                echo "<td>" . $row['event_ID'] . "</td>";
-                echo "<td>" . $row['user_ID'] . "</td>";
-                echo "<td>" . $row['name'] . "</td>";
-                echo "<td>" . $row['date'] . "</td>";
-                echo "<td>" . $row['description'] . "</td>";
-                echo "<td>" . $row['frequency'] . "</td>";
-                echo "<td>" . $row['start_time'] . "</td>";
-                echo "<td>" . $row['end_time'] . "</td>";
-            echo "</tr>";
-        }
-} 
 
 ?>

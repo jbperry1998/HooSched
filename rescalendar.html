@@ -570,6 +570,32 @@ h2 {
 			   <option value="Reminder">Reminder</option>
 			</select>
 			<input type="submit" value=" Filter " class="dropbtn"/>
+			<table>
+                <tr>
+                    <th>Event Id</th>
+                    <th>User ID</th>
+                    <th>Name</th>
+					<th>Date</th>
+					<th>Description</th>
+					<th>Frequency</th>
+					<th>Start time</th>
+					<th>End time</th>
+                </tr>
+
+      <!-- populate table from mysql database -->
+                <?php while($row = pg_fetch_array($filter_Result, NULL, PGSQL_ASSOC))):?>
+                <tr>  
+                    <td><?php echo $row['event_ID'];?></td>
+                    <td><?php echo $row['user_ID'];?></td>
+                    <td><?php echo $row['name'];?></td>
+					<td><?php echo $row['date'];?></td>
+					<td><?php echo $row['description'];?></td>
+					<td><?php echo $row['frequency'];?></td>
+					<td><?php echo $row['start_time'];?></td>
+					<td><?php echo $row['end_time'];?></td>
+                </tr>
+				<?php endwhile;?>
+			</table>
 			</div>
 		</form>
 
@@ -580,6 +606,32 @@ h2 {
 			   <option value="eventid">Event ID</option>
 			</select>
 			<input type="submit" value=" Sort " class="dropbtn" />
+			<table>
+                <tr>
+                    <th>Event Id</th>
+                    <th>User ID</th>
+                    <th>Name</th>
+					<th>Date</th>
+					<th>Description</th>
+					<th>Frequency</th>
+					<th>Start time</th>
+					<th>End time</th>
+                </tr>
+
+      <!-- populate table from mysql database -->
+                <?php while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC))):?>
+                <tr>  
+                    <td><?php echo $row['event_ID'];?></td>
+                    <td><?php echo $row['user_ID'];?></td>
+                    <td><?php echo $row['name'];?></td>
+					<td><?php echo $row['date'];?></td>
+					<td><?php echo $row['description'];?></td>
+					<td><?php echo $row['frequency'];?></td>
+					<td><?php echo $row['start_time'];?></td>
+					<td><?php echo $row['end_time'];?></td>
+                </tr>
+                <?php endwhile;?>
+            </table>
 			</div>
 		</form>
 		
