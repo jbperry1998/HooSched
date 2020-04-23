@@ -109,7 +109,7 @@ function displayMessage(message) {
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction() {
+/*function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
@@ -127,11 +127,11 @@ function filterFunction() {
       a[i].style.display = "none";
     }
   }
-}
+}*/
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction2() {
+/*function myFunction2() {
   document.getElementById("myDropdown2").classList.toggle("show");
 }
 
@@ -149,7 +149,7 @@ function filterFunction2() {
       a[i].style.display = "none";
     }
   }
-}
+}*/
 
 </script>
 
@@ -464,22 +464,22 @@ h2 {
 }
 
 /* Dropdown Button */
-.dropbtn {
+/*.dropbtn {
   background-color: #3b3342;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
-}
+}*/
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
+/*.dropbtn:hover, .dropbtn:focus {
   background-color: #3b3342;
-}
+}*/
 
 /* The search field */
-#myInput {
+/*#myInput {
   box-sizing: border-box;
   background-image: url('searchicon.png');
   background-position: 14px 12px;
@@ -488,41 +488,57 @@ h2 {
   padding: 14px 20px 12px 45px;
   border: none;
   border-bottom: 1px solid #ddd;
-}
+}*/
 
 /* The search field when it gets focus/clicked on */
-#myInput:focus {outline: 3px solid #ddd;}
+/*#myInput:focus {outline: 3px solid #ddd;}*/
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+/*.dropdown {
   position: relative;
   display: inline-block;
   margin: auto 550px;
-}
+}*/
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+/*.dropdown-content {
   display: none;
   position: absolute;
   background-color: #f6f6f6;
   min-width: 230px;
   border: 1px solid #ddd;
   z-index: 1;
-}
+}*/
 
 /* Links inside the dropdown */
-.dropdown-content a {
+/*.dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-}
+}*/
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+/*.dropdown-content a:hover {background-color: #f1f1f1}*/
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+/*.show {display:block;}*/
+
+.sortFilter {
+   margin:0;
+   padding:0;
+   position:relative;
+   text-align:center;
+}
+
+.dropbtn {
+  background-color: #3b3342;
+  color: white;
+  padding: 5px;
+  font-size: 10px;
+  border: none;
+  cursor: pointer;
+}
 
 </style>
 </head>
@@ -544,7 +560,30 @@ h2 {
 	<h4>Usage instructions: you can click on calendar to add/delete events for now, but that will change soon</h4>
 	<p>See rescalendar.html JavaScript code for relevant php files (explained below)
 	<p>db.php: connect the database, fetch-event.php: loads the events, add-event.php: adds event, edit-event.php: updates event, delete-event.php: deletes event<p>
-		<form method="post" action="filter.php">
+		
+		<form name="filter" action="filter.php" method="post">
+			<div class="sortFilter">
+			<select name="valueToSearch">
+			   <option value="choose">Make A Selection</option>
+			   <option value="Community">Community</option>
+			   <option value="Extracurricular">Extracurricular</option>
+			   <option value="Reminder">Reminder</option>
+			</select>
+			<input type="submit" value=" Filter " class="dropbtn"/>
+			</div>
+		</form>
+
+		<form name="sort" action="sort.php" method="post">
+			<div class="sortFilter">
+			<select name="valueToSort">
+			   <option value="choose">Make A Selection</option>
+			   <option value="eventid">Event ID</option>
+			</select>
+			<input type="submit" value=" Sort " class="dropbtn" />
+			</div>
+		</form>
+		
+		<!--<form method="post" action="filter.php">
 		<div class="dropdown">
 			<button onmouseover="myFunction()" class="dropbtn">Filter Dropdown</button>
 			<div id="myDropdown" class="dropdown-content">
@@ -566,7 +605,7 @@ h2 {
 			</div>
 		  </div>
 		</form>
-
+	-->
 	<div id='calendar'></div>
 </body>
 
