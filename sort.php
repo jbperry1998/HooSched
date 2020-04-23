@@ -12,6 +12,16 @@ if(isset($_POST['valueToSort']))
 $query = "SELECT * FROM `event` ORDER BY `event_ID`";
 //if($result = mysqli_query($link, $sql)){
 $result = pg_query($connect,$query);
+// Printing results in HTML
+echo "<table>\n";
+while ($line = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
+    echo "\t<tr>\n";
+    foreach ($line as $col_value) {
+        echo "\t\t<td>$col_value</td>\n";
+    }
+    echo "\t</tr>\n";
+}
+echo "</table>\n";
 header('Location: rescalendar.html');
 
 ?>
