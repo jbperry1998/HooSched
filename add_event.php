@@ -20,9 +20,9 @@
 		$start_date = date('Y-m-d', $date);
 		
 		$start = $_POST['start_time'];
-		$start = date('H:i:s', strtotime($start));
+		$start = date('Y-m-d H:i:s', strtotime($start));
 		$end = $_POST['end_time'];
-		$end = date('H:i:s', strtotime($end));
+		$end = date('Y-m-d H:i:s', strtotime($end));
 		#$start_date = $_POST['date'];
 		#$start_date = date('Y-m-d H:i:s', strtotime($date));
 		$description = $_POST['description'];
