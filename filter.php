@@ -8,13 +8,13 @@ if(isset($_POST['valueToSearch']))
     // using concat mysql function
     $query="";
     if(strcmp($valueToSearch, "Community") == 0) {
-        $query = "SELECT * FROM `event` WHERE `event_id` LIKE '%c'";
+        $query = "SELECT * FROM `event` WHERE `event_ID` LIKE '%c'";
     }
     else if(strcmp($valueToSearch, "Extracurricular") == 0) {
-        $query = "SELECT * FROM `event` WHERE `event_id` LIKE '%e'";
+        $query = "SELECT * FROM events WHERE event_ID LIKE '%e'";
     }
     else if(strcmp($valueToSearch, "Reminder") == 0) {
-        $query = "SELECT * FROM `event` WHERE `event_id` LIKE '%r'";
+        $query = "SELECT * FROM events WHERE event_ID LIKE '%r'";
     }
     #$query = "SELECT * FROM `Event` WHERE CONCAT(`event_ID`, `user_ID`, `name`, `date`, `description`, `frequency`, `start_time`, `end_time`) LIKE '%c'";
    //vals from table that need to put together
@@ -22,7 +22,7 @@ if(isset($_POST['valueToSearch']))
     
 }
  else {
-    $query = "SELECT * FROM `event`";
+    $query = "SELECT * FROM events";
 	//need to have static table or find a way for any table to be chosen
     $search_result = filterTable($query);
 }
@@ -47,5 +47,4 @@ function filterTable($query)
     return $filter_Result;
 }
 header('Location: rescalendar.html');
-
 ?>

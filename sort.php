@@ -9,7 +9,7 @@ if(isset($_POST['valueToSort']))
     $valueToSearch = $_POST['valueToSort'];
 }
  #if valueToSort == Event Type
-$query = "SELECT * FROM `event` ORDER BY `event_ID`";
+$query = "SELECT * FROM events ORDER BY event_ID";
 //if($result = mysqli_query($link, $sql)){
 $result = pg_query($connect,$query);
 // Printing results in HTML
