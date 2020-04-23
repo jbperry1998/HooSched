@@ -41,8 +41,8 @@ function filterTable($query)
                                 </tr>";
     while ($row = pg_fetch_row($filter_Result)) {
         echo "<tr>";
+        echo "<td>" . $row[0] . "</td>";
         echo "<td>" . $row[1] . "</td>";
-        echo "<td>" . $row[2] . "</td>";
         echo "</tr>";
     }
     return $filter_Result;
