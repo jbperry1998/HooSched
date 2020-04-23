@@ -17,7 +17,7 @@
 		#$end_time = $_POST['end_time'];
 		#$end = date("H:i:s",$start_time);
 		$date = $_POST['date'];
-		$start_date = date('Y-m-d', $date);
+		$start_date = date('Y-m-d', strtotime($date));
 		
 		$start = $_POST['start_time'];
 		$start = date('Y-m-d H:i:s', strtotime($start));
