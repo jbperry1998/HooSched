@@ -13,11 +13,18 @@
 		$event_ID = $_POST['event_ID'];
 		$name = $_POST['name'];
 		$start_time = $_POST['start_time'];
-		$start = date("H,i,s",$start_time);
-		$end_time = $_POST['end_time'];
-		$end = date("H,i,s",$start_time);
-		$date = $_POSt['date'];
-		$start_date = date('yyyy-mm-dd', $date);
+		#$start = date("H:i:s",$start_time);
+		#$end_time = $_POST['end_time'];
+		#$end = date("H:i:s",$start_time);
+		$date = $_POST['date'];
+		$start_date = date('Y-m-d', $date);
+		
+		$start = $_POST['start_time'];
+		$start = date('Y-m-d H:i:s', strtotime($start));
+		$end = $_POST['end_time'];
+		$end = date('Y-m-d H:i:s', strtotime($end));
+		#$start_date = $_POST['date'];
+		#$start_date = date('Y-m-d H:i:s', strtotime($date));
 		$description = $_POST['description'];
 		$frequency = $_POST['frequency'];
 
