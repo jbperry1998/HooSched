@@ -35,6 +35,7 @@ function filterTable($query)
     ");
     $filter_Result = pg_query($connect, $query);
     return $filter_Result;
+    header('Location: rescalendar.html');
 }
 
 ?>

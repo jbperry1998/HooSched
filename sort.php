@@ -12,5 +12,6 @@ if(isset($_POST['valueToSort']))
 $query = "SELECT * FROM `event` ORDER BY `event_ID`";
 //if($result = mysqli_query($link, $sql)){
 $result = pg_query($connect,$query);
+header('Location: rescalendar.html');
 
 ?>
