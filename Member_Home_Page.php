@@ -6,22 +6,22 @@
 -->
 <html>
 <head>
-<title>Member Home Page - HooCooks</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/main.css" />
+<<head>
+		<title>HooSched</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<?php
-session_start();
-$login_status = $_SESSION['logged_in'];
-if (! strcmp($login_status, "logged_in") == 0) {
-    header('Location: elements.html');
-}
-$email = unserialize($_SESSION['email']);
-// $username = $_SESSION['username'];
-// $name = $_SESSION['name'];
-?>
-	</head>
+		session_start();
+		$login_status = $_SESSION['logged_in'];
+		if (! strcmp($login_status, "logged_in") == 0) {
+			header('Location: elements.html');
+		}
+		//$email = unserialize($_SESSION['email']);
+		// $username = $_SESSION['username'];
+		// $name = $_SESSION['name'];
+		?>
+</head>
 <body class="is-preload">
 	<div id="page-wrapper">
 
@@ -40,12 +40,6 @@ $email = unserialize($_SESSION['email']);
 		</header>
 
 		<!-- Banner -->
-		<section id="banner">
-			<header>
-				<h2>Welcome to HooCooks!</h2>
-
-			</header>
-		</section>
 
 		<!-- Main -->
 		<section id="main" class="container">
@@ -55,42 +49,63 @@ $email = unserialize($_SESSION['email']);
 					<!-- Text -->
 					<section class="box special">
 						<header class="major">
-							<h2>Account information</h2>
+							<h2>Results</h2>
 							<p>
 								<?php
         session_start();
-        $email = $_SESSION['email'];
+        $username = $_SESSION['username'];
         echo "<table border='1'>
 								<tr>
-								<th>Email</th>
+								<th>Username</th>
 								</tr>";
         echo "<tr>";
-        echo "<td>" . $email . "</td>";
+        echo "<td>" . $username . "</td>";
         echo "</tr>";
-        $db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
- 								port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
-								");
-        $query = "SELECT * FROM sales WHERE email='$email'";
+		$db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
+		port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
+		");
+		$valueToSearch = $_POST['valueToSearch'];
+		$query="SELECT * FROM events";
+		/*
+		if(strcmp($valueToSearch, "Community") == 0) {
+			$query = "SELECT * FROM events WHERE event_id LIKE 'c%' AND user_ID ='$username'";
+		}
+		else if(strcmp($valueToSearch, "Extracurricular") == 0) {
+			$query = "SELECT * FROM events WHERE event_id LIKE 'e%' AND user_ID = '$username'";
+		}
+		else if(strcmp($valueToSearch, "Reminder") == 0) {
+			$query = "SELECT * FROM events WHERE event_id LIKE 'r%' AND user_ID = '$username'";
+		}
+		*/
         $result = pg_query($db_connection, $query);
         echo "<table border='1'>
 								<tr>
-								<th>CookBook</th>
-								<th>Subscription</th>
+								<th>event_ID</th>
+								<th>user_ID</th>
+								<th>name</th>
+								<th>date</th>
+								<th>description</th>
+								<th>frequency</th>
+								<th>start_time</th>
+								<th>end_time</th>
+
 								</tr>";
         if (pg_num_rows($result) == 0) {
-            $cb = "not purchased";
-            $sub = "not purchased";
+            $cb = "nothing returned";
             echo "<tr>";
             echo "<td>" . $cb . "</td>";
-            echo "<td>" . $sub . "</td>";
             echo "</tr>";
         } else {
             while ($row = pg_fetch_row($result)) {
-                $cb = (strcmp(strval($row[1]), "0") == 0 ? "not purchased" : "purchased");
-                $sub = (strcmp(strval($row[2]), "0") == 0 ? "not purchased" : "purchased");
                 echo "<tr>";
-                echo "<td>" . $cb . "</td>";
-                echo "<td>" . $sub . "</td>";
+                echo "<td>" . $row[0] . "</td>";
+				echo "<td>" . $row[1] . "</td>";
+				echo "<td>" . $row[2] . "</td>";
+				echo "<td>" . $row[3] . "</td>";
+				echo "<td>" . $row[4] . "</td>";
+				echo "<td>" . $row[5] . "</td>";
+				echo "<td>" . $row[6] . "</td>";
+				echo "<td>" . $row[7] . "</td>";
                 echo "</tr>";
             }
         }
@@ -103,9 +118,6 @@ $email = unserialize($_SESSION['email']);
 
 				</div>
 			</div>
-		</section>
-		<section id="cta">
-			<a href="unsub.html" class="button">Unsubscribe</a>
 		</section>
 	</div>
 
