@@ -29,12 +29,11 @@
 		<header id="header">
 			<nav id="nav">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">About Us</a></li>
-					<li><a href="contact.html">Contact Us</a></li>
-					<li><a href="product.html">Products</a></li>
-					<li><a href="Member_Home_Page.php">Member Page</a></li>
-					<li><a href="log_out.php" class="button">Log Out</a></li>
+					<li><a href="rescalendar.html">Back to Calendar</a></li>
+					<li><a href="logout.html">Log Out</a></li>
+					<li><a href="add_event.html" class="button">Add Event</a></li>
+					<li><a href="org.html" class="button">Make an Organization</a></li>
+					<li><a href="settings.html" class="button">Settings</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -53,19 +52,21 @@
 							<p>
 								<?php
         session_start();
-        $username = $_SESSION['username'];
+		$username = $_SESSION['username'];
+		/*
         echo "<table border='1'>
 								<tr>
 								<th>Username</th>
 								</tr>";
         echo "<tr>";
         echo "<td>" . $username . "</td>";
-        echo "</tr>";
+		echo "</tr>";
+		*/
 		$db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
 		port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
 		");
 		$valueToSearch = $_POST['valueToSearch'];
-		$query="SELECT * FROM events";
+		$query="SELECT * FROM events WHERE event_ID LIKE 'c%'";
 		/*
 		if(strcmp($valueToSearch, "Community") == 0) {
 			$query = "SELECT * FROM events WHERE event_id LIKE 'c%' AND user_ID ='$username'";
