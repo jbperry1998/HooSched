@@ -38,7 +38,11 @@
 		$venue = $_POST['venue'];
 		$owner_ID = $_POST['owner_ID'];
 
-		
+		$query_3 = "INSERT INTO '$user_table' VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
+		$result = pg_query($db_connection, $query);
+		if(!result_3){
+			header('Location: add_event.html');
+		}
 
 		if(isset($school_name)){
 			//insert username and school into students table
@@ -50,9 +54,9 @@
     		$result_2 = pg_query($db_connection,$query_2);
 		}
 		$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
-		$query_3 = "INSERT INTO $user_table VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
-		$result = pg_query($db_connection, $query);
+		
 		$result_3 = pg_query($db_connection, $query_3);
+		
 		$query_3 = "INSERT INTO makes VALUES('$user_ID','$event_ID')";
 		$result_3 = pg_query($db_connection, $query_3);
 		header('Location: rescalendar.html');
