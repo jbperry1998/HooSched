@@ -15,5 +15,5 @@
 		$r = pg_query($db_connection, $q);//should get the event from events
 
 
-
+		header('Location: rescalendar.html');
 ?>
