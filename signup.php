@@ -9,13 +9,15 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // sql to create table
-    $sql = "CREATE TABLE employees (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-    firstname VARCHAR(30) NOT NULL,
-    lastname VARCHAR(30) NOT NULL,
-    email VARCHAR(50),
-    reg_date TIMESTAMP
-    )";
+    $sql = "CREATE TABLE IF NOT EXISTS $username(
+		event_ID character varying(50) NOT NULL,
+		name character varying(50) NOT NULL,
+		date date NOT NULL,
+		description character varying(100) NOT NULL,
+		frequency character varying(20) NOT NULL,
+		start_time timestamp without time zone,
+		end_time timestamp without time zone
+		)";
     // use exec() because no results are returned
     $conn->exec($sql);
 	echo "Table employees created successfully";
