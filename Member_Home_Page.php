@@ -63,7 +63,7 @@
 		port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
 		");
 		$valueToSearch = $_POST['valueToSearch'];
-		$query="SELECT * FROM events";
+		$query="SELECT * FROM events WHERE user_id ='$username'";
 		
 		if(strcmp($valueToSearch, "Community") == 0) {
 			$query = "SELECT * FROM events WHERE event_id LIKE 'c%' AND user_id ='$username'";
