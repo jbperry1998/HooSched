@@ -21,10 +21,22 @@ $user = pg_fetch_assoc($result);
 
 
 if(!$user) {
-    $query_1 = "INSERT INTO site_users VALUES('$first_name','$last_name','$username','$hashed_password')";
-    $result_1 = pg_query($db_connection,$query_1);
+    $query_1 = "INSERT INTO site_users VALUES('$first_name','$last_name','$username','$hashed_password','$username')";
+	$result_1 = pg_query($db_connection,$query_1);
+	$quert_2 = "CREATE TABLE IF NOT EXISTS '$username'(
+		event_ID character varying(50) NOT NULL,
+		name character varying(50) NOT NULL,
+		date date NOT NULL,
+		description character varying(100) NOT NULL,
+		frequency character varying(20) NOT NULL,
+		start_time timestamp without time zone,
+		end_time timestamp without time zone,
+		CONSTRAINT "timeCheck" CHECK (start_time < end_time) NOT VALID
+		) ";
+	$result_2 = pg_query($db_connection,$query_2);
     
-    $_SESSION['username'] = $username;
+	$_SESSION['username'] = $username;
+	$_SESSION['user_table'] = $username;
     //$_SESSION['email'] = $email;
     $_SESSION['logged_in'] = "logged_in";
     

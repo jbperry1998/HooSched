@@ -31,9 +31,6 @@
 				<ul>
 					<li><a href="rescalendar.html">Back to Calendar</a></li>
 					<li><a href="logout.html">Log Out</a></li>
-					<li><a href="add_event.html" class="button">Add Event</a></li>
-					<li><a href="org.html" class="button">Make an Organization</a></li>
-					<li><a href="settings.html" class="button">Settings</a></li>
 				</ul>
 			</nav>
 		</header>
