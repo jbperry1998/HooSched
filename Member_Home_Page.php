@@ -64,15 +64,23 @@
 		");
 		$valueToSearch = $_POST['valueToSearch'];
 		$query="SELECT * FROM events WHERE user_id ='$username'";
-		
-		if(strcmp($valueToSearch, "Community") == 0) {
-			$query = "SELECT * FROM events WHERE event_id LIKE 'c%' AND user_id ='$username'";
+		if(iiset($valueToSearch)) {
+			if(strcmp($valueToSearch, "Community") == 0) {
+				$query = "SELECT * FROM events WHERE event_id LIKE 'c%' AND user_id ='$username'";
+			}
+			else if(strcmp($valueToSearch, "Extracurricular") == 0) {
+				$query = "SELECT * FROM events WHERE event_id LIKE 'e%' AND user_id = '$username'";
+			}
+			else if(strcmp($valueToSearch, "Reminder") == 0) {
+				$query = "SELECT * FROM events WHERE event_id LIKE 'r%' AND user_id = '$username'";
+			}
 		}
-		else if(strcmp($valueToSearch, "Extracurricular") == 0) {
-			$query = "SELECT * FROM events WHERE event_id LIKE 'e%' AND user_id = '$username'";
-		}
-		else if(strcmp($valueToSearch, "Reminder") == 0) {
-			$query = "SELECT * FROM events WHERE event_id LIKE 'r%' AND user_id = '$username'";
+
+		if(isset($_POST['valueToSort']))
+		{
+			$valueToSearch = $_POST['valueToSort'];
+			#if valueToSort == Event Type
+			$query = "SELECT * FROM events ORDER BY event_ID";
 		}
 		
         $result = pg_query($db_connection, $query);
