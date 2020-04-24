@@ -10,8 +10,8 @@
 		$user_ID = $_SESSION['username'];
 		$user_table = $_SESSSION['user_table'];
 		// $name = $_SESSION['name'];
-		$event_ID = $_POST['event_ID'];
-		$q = "INSERT INTO $user_table SELECT * FROM events WHERE event_ID = '$event_ID'";
+		$org_ID = $_POST['event_ID'];
+		$q = "INSERT INTO organization_members VALUES('$org_ID','$user_ID')";
 		$r = pg_query($db_connection, $q);//should get the event from events
 
 

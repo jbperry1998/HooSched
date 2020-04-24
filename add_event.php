@@ -39,11 +39,6 @@
 		$owner_ID = $_POST['owner_ID'];
 		$tabe = 'xx12xx';
 
-		$query_4 = "INSERT INTO $user_table VALUES('$event_ID','$name','$start_date','$description','$frequency','$start','$end')";
-		$result_4 = pg_query($db_connection, $query_4);
-		if(!$result_4){
-			header('Location: add_event.html');
-		}
 
 		if(isset($school_name)){
 			//insert username and school into students table

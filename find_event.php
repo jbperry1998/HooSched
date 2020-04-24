@@ -45,7 +45,7 @@
 					<!-- Text -->
 					<section class="box special">
 						<header class="major">
-							<h2>Results</h2>
+							<h2>Organizations</h2>
 							<p>
 								<?php
         session_start();
@@ -63,19 +63,14 @@
 		port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
 		");
 		$valueToSearch = $_POST['valueToSearch'];
-		$query="SELECT * FROM events";
+		$query="SELECT * FROM organization";
 		
         $result = pg_query($db_connection, $query);
         echo "<table border='1'>
 								<tr>
-								<th>event_ID</th>
-								<th>user_ID</th>
-								<th>name</th>
-								<th>date</th>
-								<th>description</th>
-								<th>frequency</th>
-								<th>start_time</th>
-								<th>end_time</th>
+								<th>org_ID</th>
+								<th>orgName_ID</th>
+								<th>field</th>
 
 								</tr>";
         if (pg_num_rows($result) == 0) {
@@ -89,11 +84,6 @@
                 echo "<td>" . $row[0] . "</td>";
 				echo "<td>" . $row[1] . "</td>";
 				echo "<td>" . $row[2] . "</td>";
-				echo "<td>" . $row[3] . "</td>";
-				echo "<td>" . $row[4] . "</td>";
-				echo "<td>" . $row[5] . "</td>";
-				echo "<td>" . $row[6] . "</td>";
-				echo "<td>" . $row[7] . "</td>";
                 echo "</tr>";
             }
         }
@@ -107,10 +97,10 @@
 				</div>
 			</div>
 			<form method="post" action="add.php">
-				<h3>Event ID</h3>
+				<h3>Organization ID</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="text" name="event_ID" id="event_ID"
-						pattern="[a-z]{3}\d{2}" value="" placeholder="event_ID" required />
+						pattern="[a-z]{3}\d{2}" value="" placeholder="org_ID" required />
 					<p>3 lowercase letters followed by 2 numbers</p>
 				</div>
 				<div>
