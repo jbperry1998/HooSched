@@ -17,7 +17,8 @@ $row = pg_fetch_row($result);
 $hp = $row[3];
 if (password_verify($password, $hp)) {
     $_SESSION['username'] = $username;
-    $_SESSION['logged_in'] = "logged_in";
+	$_SESSION['logged_in'] = "logged_in";
+	$_SESSION['user_table'] = $username;
 
     // change to homepage for members
     header('Location: rescalendar.html');
