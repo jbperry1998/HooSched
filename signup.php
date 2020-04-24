@@ -47,18 +47,18 @@ if(!$user) {
 			)";
 		// use exec() because no results are returned
 		$conn->exec($sql);
-		echo "Table employees created successfully";
+		//echo "Table employees created successfully";
+		$_SESSION['username'] = $username;
+		$_SESSION['user_table'] = $username;
+		//$_SESSION['email'] = $email;
+		$_SESSION['logged_in'] = "logged_in";
 		header('Location: rescalendar.html');
 		}
 	catch(PDOException $e)
 		{
 		echo $sql . "<br>" . $e->getMessage();
+		header('Location: index.html');
 		}
-	$conn = null;
-	$_SESSION['username'] = $username;
-	$_SESSION['user_table'] = $username;
-    //$_SESSION['email'] = $email;
-    $_SESSION['logged_in'] = "logged_in";
     
     //change to homepage for members
     header('Location: rescalendar.html');
