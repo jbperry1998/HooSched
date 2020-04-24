@@ -76,13 +76,13 @@
 			}
 		}
 
-		if(isset($_POST['valueToSort']))
+		/*if(isset($_POST['valueToSort']))
 		{
 			$valueToSearch = $_POST['valueToSort'];
 			#if valueToSort == Event Type
 			$query = "SELECT * FROM events ORDER BY event_ID";
-		}
-		
+		}*/
+
         $result = pg_query($db_connection, $query);
         echo "<table border='1'>
 								<tr>
