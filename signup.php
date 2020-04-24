@@ -5,7 +5,7 @@ $username = "zdlwovjrekrdar";
 $password = "ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5";
 $dbname = "dbvs140f5cqkp1";
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$servername;port=5432;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // sql to create table
