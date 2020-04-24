@@ -34,7 +34,7 @@ if(!$user) {
 		end_time timestamp without time zone
 		) ";
 		*/
-	$quert_2 = "CREATE TABLE IF NOT EXISTS public.something(
+	$quert_2 = "CREATE TABLE IF NOT EXISTS something(
 		event_ID character varying(50) NOT NULL,
 		name character varying(50) NOT NULL,
 		date date NOT NULL,
@@ -48,7 +48,7 @@ if(!$user) {
 		)
 		TABLESPACE pg_default;
 		
-		ALTER TABLE public.something
+		ALTER TABLE something
 			OWNER to zdlwovjrekrdar";
 	
 	$result_2 = pg_query($db_connection,$query_2);
