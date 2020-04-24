@@ -20,9 +20,10 @@
 	
 	foreach($result as $row) {
 		$eventArray[] = array(
-			'id'    => $row["event_ID"],
-			'name'  => $row["name"],
-			'start' => '2020-04-02'
+			'id'    => $row["event_id"],
+			'title' => $row["name"],
+			'start' => $row["start_name"],
+			'end'   => $row["end_time"]
 		);
     }
 
