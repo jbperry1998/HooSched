@@ -34,15 +34,22 @@ if(!$user) {
 		end_time timestamp without time zone
 		) ";
 		*/
-	$quert_2 = "CREATE TABLE IF NOT EXISTS something(
-		event_ID character varying(50) NOT NULL,
-		name character varying(50) NOT NULL,
+	$quert_2 = "CREATE TABLE IF NOT EXISTS public.something(
+		event_ID character varying(50) COLLATE pg_catalog."default" NOT NULL,
+		name character varying(50) COLLATE pg_catalog."default" NOT NULL,
 		date date NOT NULL,
-		description character varying(100) NOT NULL,
-		frequency character varying(20) NOT NULL,
+		description character varying(100) COLLATE pg_catalog."default" NOT NULL,
+		frequency character varying(20) COLLATE pg_catalog."default" NOT NULL,
 		start_time timestamp without time zone,
 		end_time timestamp without time zone
-		) ";
+		) 
+		WITH (
+			OIDS = FALSE
+		)
+		TABLESPACE pg_default;
+		
+		ALTER TABLE public.site_users
+			OWNER to zdlwovjrekrdar";
 	
 	$result_2 = pg_query($db_connection,$query_2);
     if(!$result_2){
