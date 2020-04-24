@@ -23,6 +23,7 @@ $user = pg_fetch_assoc($result);
 if(!$user) {
     $query_1 = "INSERT INTO site_users VALUES('$first_name','$last_name','$username','$hashed_password','$username')";
 	$result_1 = pg_query($db_connection,$query_1);
+	/*
 	$quert_2 = "CREATE TABLE IF NOT EXISTS '$username'(
 		event_ID character varying(50) NOT NULL,
 		name character varying(50) NOT NULL,
@@ -32,8 +33,21 @@ if(!$user) {
 		start_time timestamp without time zone,
 		end_time timestamp without time zone
 		) ";
+		*/
+	$quert_2 = "CREATE TABLE IF NOT EXISTS something(
+		event_ID character varying(50) NOT NULL,
+		name character varying(50) NOT NULL,
+		date date NOT NULL,
+		description character varying(100) NOT NULL,
+		frequency character varying(20) NOT NULL,
+		start_time timestamp without time zone,
+		end_time timestamp without time zone
+		) ";
+	
 	$result_2 = pg_query($db_connection,$query_2);
-    
+    if(!$result_2){
+		header('Location: index.html');
+	}
 	$_SESSION['username'] = $username;
 	$_SESSION['user_table'] = $username;
     //$_SESSION['email'] = $email;
