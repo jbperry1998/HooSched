@@ -64,17 +64,17 @@
 		");
 		$valueToSearch = $_POST['valueToSearch'];
 		$query="SELECT * FROM events";
-		/*
+		
 		if(strcmp($valueToSearch, "Community") == 0) {
-			$query = "SELECT * FROM events WHERE event_id LIKE 'c%' AND user_ID ='$username'";
+			$query = "SELECT * FROM events WHERE 'event_ID' LIKE 'c%' AND user_ID ='$username'";
 		}
 		else if(strcmp($valueToSearch, "Extracurricular") == 0) {
-			$query = "SELECT * FROM events WHERE event_id LIKE 'e%' AND user_ID = '$username'";
+			$query = "SELECT * FROM events WHERE 'event_ID' LIKE 'e%' AND user_ID = '$username'";
 		}
 		else if(strcmp($valueToSearch, "Reminder") == 0) {
-			$query = "SELECT * FROM events WHERE event_id LIKE 'r%' AND user_ID = '$username'";
+			$query = "SELECT * FROM events WHERE 'event_ID' LIKE 'r%' AND user_ID = '$username'";
 		}
-		*/
+		
         $result = pg_query($db_connection, $query);
         echo "<table border='1'>
 								<tr>
