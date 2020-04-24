@@ -50,7 +50,6 @@
 								<?php
         session_start();
 		$username = $_SESSION['username'];
-		$user_table = $_SESSION['user_table'];
 		/*
         echo "<table border='1'>
 								<tr>
@@ -64,17 +63,7 @@
 		port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
 		");
 		$valueToSearch = $_POST['valueToSearch'];
-		$query="SELECT * FROM $user_table WHERE user_id ='$username'";
-		
-		if(strcmp($valueToSearch, "Community") == 0) {
-			$query = "SELECT * FROM $user_table WHERE event_id LIKE 'c%' AND user_id ='$username'";
-		}
-		else if(strcmp($valueToSearch, "Extracurricular") == 0) {
-			$query = "SELECT * FROM $user_table WHERE event_id LIKE 'e%' AND user_id = '$username'";
-		}
-		else if(strcmp($valueToSearch, "Reminder") == 0) {
-			$query = "SELECT * FROM $user_table WHERE event_id LIKE 'r%' AND user_id = '$username'";
-		}
+		$query="SELECT * FROM events";
 		
         $result = pg_query($db_connection, $query);
         echo "<table border='1'>
@@ -117,6 +106,19 @@
 
 				</div>
 			</div>
+		</section>
+		<section id="cta">
+		<form method="post" action="add.php">
+				<h3>Event ID</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="text" name="event_ID" id="event_ID"
+						pattern="[a-z]{3}\d{2}" value="" placeholder="event_ID" required />
+					<p>3 lowercase letters followed by 2 numbers</p>
+				</div>
+				<div>
+					<input type="submit" value="Submit">
+				</div>
+		</form>
 		</section>
 	</div>
 
