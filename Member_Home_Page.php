@@ -80,7 +80,7 @@
 		{
 			$valueToSearch = $_POST['valueToSort'];
 			#if valueToSort == Event Type
-			$query = "SELECT * FROM events ORDER BY event_ID";
+			$query = "SELECT * FROM events WHERE user_id = '$username' ORDER BY event_ID";
 		}
 
         $result = pg_query($db_connection, $query);
