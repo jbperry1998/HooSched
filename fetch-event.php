@@ -22,7 +22,7 @@
 		$eventArray[] = array(
 			'id'    => $row["event_id"],
 			'title' => $row["name"],
-			'start' => $row["start_name"],
+			'start' => $row["start_time"],
 			'end'   => $row["end_time"]
 		);
     }
