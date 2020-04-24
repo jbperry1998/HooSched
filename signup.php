@@ -4,6 +4,9 @@ session_start();
 $db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
  port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
 ");
+$db = new PDO("host=ec2-174-129-227-80.compute-1.amazonaws.com
+port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
+");
 $username = $_POST['username'];
 //$email = $_POST['email'];
 //$address = $_POST['address'];
@@ -34,7 +37,7 @@ if(!$user) {
 		end_time timestamp without time zone
 		) ";
 		*/
-	$quert_2 = "CREATE TABLE IF NOT EXISTS something(
+	$quert_2 = "CREATE TABLE IF NOT EXISTS $username(
 		event_ID character varying(50) NOT NULL,
 		name character varying(50) NOT NULL,
 		date date NOT NULL,
@@ -50,11 +53,11 @@ if(!$user) {
 		
 		ALTER TABLE something
 			OWNER to zdlwovjrekrdar";
-	
-	$result_2 = pg_query($db_connection,$query_2);
-    if(!$result_2){
-		header('Location: index.html');
-	}
+	$create_table = $db->exec($query_2);
+	//$result_2 = pg_query($db_connection,$query_2);
+    //if(!$result_2){
+	//	header('Location: index.html');
+	//}
 	$_SESSION['username'] = $username;
 	$_SESSION['user_table'] = $username;
     //$_SESSION['email'] = $email;
