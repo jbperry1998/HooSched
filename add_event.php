@@ -38,7 +38,7 @@
 		$venue = $_POST['venue'];
 		$owner_ID = $_POST['owner_ID'];
 
-		$query_4 = "INSERT INTO xx12xx VALUES('$event_ID','$name','$start_date','$description','$frequency','$start','$end')";
+		$query_4 = "INSERT INTO $user_table VALUES('$event_ID','$name','$start_date','$description','$frequency','$start','$end')";
 		$result_4 = pg_query($db_connection, $query_4);
 		if(!$result_4){
 			header('Location: add_event.html');
