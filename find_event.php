@@ -106,9 +106,7 @@
 
 				</div>
 			</div>
-		</section>
-		<section id="cta">
-		<form method="post" action="add.php">
+			<form method="post" action="add.php">
 				<h3>Event ID</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="text" name="event_ID" id="event_ID"
@@ -120,6 +118,8 @@
 				</div>
 		</form>
 		</section>
+		
+		
 	</div>
 
 </body>
