@@ -11,9 +11,9 @@
 $(document).ready(function () {
     var calendar = $('#calendar').fullCalendar({
 		header: {
-		  left: 'prev,next today filterButton',
+		  left: 'prev,next today createButton editButton deleteButton',
 		  center: 'title',
-		  right: 'exportButton month,agendaWeek,agendaDay'
+		  right: 'addButton exportButton month,agendaWeek,agendaDay'
 		},
 		customButtons: {
 			exportButton: {
@@ -22,10 +22,28 @@ $(document).ready(function () {
 				alert('this should export calendar data');
 			  }
 			},
-			filterButton: {
+			addButton: {
 			  text: 'add',
 			  click: function(event, jsEvent, view) {
-				window.location.href = 'find_event.php';
+				window.location.href = 'add_event.html'; // CHANGE TO CORRECT HTML
+			  }
+			},
+			createButton: {
+			  text: 'create',
+			  click: function(event, jsEvent, view) {
+				window.location.href = 'add_event.html';
+			  }
+			},
+			editButton: {
+			  text: 'edit',
+			  click: function(event, jsEvent, view) {
+				window.location.href = 'add_event.html'; // CHANGE TO EDIT HTML
+			  }
+			},
+			deleteButton: {
+			  text: 'delete',
+			  click: function(event, jsEvent, view) {
+				window.location.href = 'add_event.html'; // CHANGE TO DELETE HTML
 			  }
 			}
 		},
@@ -547,21 +565,15 @@ h2 {
 		<h1><a href="index.html">HooSched</a></h1>
 			<nav id="nav">
 				<ul>
-					
-					<li><a href="logout.html">Log Out</a></li>
-					<li><a href="add_event.html" class="button">Create Event</a></li>
 					<li><a href="org.html" class="button">Make an Organization</a></li>
 					<li><a href="settings.html" class="button">Settings</a></li>
+					<li><a href="logout.html">Log Out</a></li>
 				</ul>
 			</nav>
 	</header>
 	
     <div class="response"></div>
-	
-	<h4>Usage instructions: you can click on calendar to add/delete events for now, but that will change soon</h4>
-	<p>See rescalendar.html JavaScript code for relevant php files (explained below)
-	<p>db.php: connect the database, fetch-event.php: loads the events, add-event.php: adds event, edit-event.php: updates event, delete-event.php: deletes event<p>
-		
+
 		<form name="filter" action="Member_Home_Page.php" method="post">
 			<div class="sortFilter">
 			<select name="valueToSearch">
