@@ -18,7 +18,8 @@ try {
     )";
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "Table employees created successfully";
+	echo "Table employees created successfully";
+	header('Location: rescalendar.html');
     }
 catch(PDOException $e)
     {
