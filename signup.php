@@ -47,17 +47,15 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 
-//$query = "SELECT* FROM site_users WHERE username='$username'";
-//$result = pg_query($db_connection,$query);
-//$user = pg_fetch_assoc($result);
-//$conn->exec($query);
+$query = "SELECT* FROM site_users WHERE username='$username'";
+$result = pg_query($db_connection,$query);
+$user = pg_fetch_assoc($result);
 
 
-//if(!$user) {
+if(!$user) {
 
     $query_1 = "INSERT INTO site_users VALUES('$first_name','$last_name','$username','$hashed_password','$username')";
-	//$result_1 = pg_query($db_connection,$query_1);
-	$conn->exec($query_1);
+	$result_1 = pg_query($db_connection,$query_1);
 	 $_SESSION['username'] = $username;
 		$_SESSION['user_table'] = $username;
 		//$_SESSION['email'] = $email;
@@ -65,7 +63,10 @@ $last_name = $_POST['last_name'];
 		header('Location: rescalendar.html');
    
     //change to homepage for members
-
+    header('Location: rescalendar.html');
+}else{
+    header('Location: index.html');
+}
 
 
 
