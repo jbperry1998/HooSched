@@ -30,8 +30,7 @@ if(!$user) {
 		description character varying(100) NOT NULL,
 		frequency character varying(20) NOT NULL,
 		start_time timestamp without time zone,
-		end_time timestamp without time zone,
-		CONSTRAINT "timeCheck" CHECK (start_time < end_time) NOT VALID
+		end_time timestamp without time zone
 		) ";
 	$result_2 = pg_query($db_connection,$query_2);
     
