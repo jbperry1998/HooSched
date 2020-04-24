@@ -64,7 +64,7 @@ if(!$user) {
     $_SESSION['logged_in'] = "logged_in";
     
     //change to homepage for members
-    header('Location: settings.html');
+    header('Location: rescalendar.html');
 }else{
     header('Location: index.html');
 }
