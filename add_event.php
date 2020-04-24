@@ -8,6 +8,7 @@
 			header('Location: elements.html');
 		}
 		$user_ID = $_SESSION['username'];
+		$user_table = $_SESSSION['user_table'];
 		// $name = $_SESSION['name'];
 
 		$event_ID = $_POST['event_ID'];
@@ -49,7 +50,9 @@
     		$result_2 = pg_query($db_connection,$query_2);
 		}
 		$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
+		$query_3 = "INSERT INTO $user_table VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
 		$result = pg_query($db_connection, $query);
+		$result_3 = pg_query($db_connection, $query_3);
 		$query_3 = "INSERT INTO makes VALUES('$user_ID','$event_ID')";
 		$result_3 = pg_query($db_connection, $query_3);
 		header('Location: rescalendar.html');
