@@ -67,7 +67,7 @@ if(!$user) {
 
 		if(isset($school)){
 			//insert username and school into students table
-			$query_3 = "INSERT INTO student VALUES('$user_ID','$school')";
+			$query_3 = "INSERT INTO student VALUES('$username','$school')";
 			$result_3 = pg_query($db_connection,$query_3);
 			$_SESSION['user_type'] = "student";
 			#if(result_3){
@@ -75,7 +75,7 @@ if(!$user) {
 			#}
 		}
 		if(isset($org_ID)){
-			$query_2 = "INSERT INTO admin VALUES('$org_ID','$user_ID')";
+			$query_2 = "INSERT INTO admin VALUES('$org_ID','$username')";
 			$result_2 = pg_query($db_connection,$query_2);
 			$_SESSION['user_type'] = "admin";
 			$_SESSION['org_id'] = $org_ID;
