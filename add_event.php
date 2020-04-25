@@ -19,11 +19,13 @@
 		#$end = date("H:i:s",$start_time);
 		$date = $_POST['date'];
 		$start_date = date('Y-m-d', strtotime($date));
+		$date_stime = $_POST['date'] + $_POST['start_time'];
 		
 		$start = $_POST['start_time'];
-		$start = date('Y-m-d H:i:s', strtotime($date), strtotime($start));
+		$start = date('Y-m-d H:i:s', strtotime($start));
+		#$start = TO_TIMESTAMP($date_stime, 'YYYY-MM-DD HH24:MI:SS');
 		$end = $_POST['end_time'];
-		$end = date('Y-m-d H:i:s', strtotime($date), strtotime($end));
+		$end = date('Y-m-d H:i:s', strtotime($end));
 		#$start_date = $_POST['date'];
 		#$start_date = date('Y-m-d H:i:s', strtotime($date));
 		$description = $_POST['description'];
