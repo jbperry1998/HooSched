@@ -62,8 +62,8 @@ if(!$user) {
 		$_SESSION['user_table'] = pq_escape_string($_POST['username']);
 		//$_SESSION['email'] = $email;
 		$_SESSION['logged_in'] = "logged_in";
-		$_SESSION['user_type'] = "";
-		$_SESSION['org_id'] = "";
+		$_SESSION['user_type'] = "h";
+		$_SESSION['org_id'] = "h";
 
 		if(isset($school)){
 			//insert username and school into students table
@@ -73,8 +73,6 @@ if(!$user) {
 			#if(result_3){
 			#	header('Location: calendar.html');
 			#}
-			
-
 		}
 		if(isset($org_ID)){
 			$query_2 = "INSERT INTO admin VALUES('$org_ID','$user_ID')";
@@ -84,10 +82,7 @@ if(!$user) {
 			#if(result_2){
 			#	header('Location: rescalendar.html');
 			#}
-		}
-
-		header('Location: rescalendar.html');
-   
+		}   
     //change to homepage for members
     header('Location: rescalendar.html');
 }else{
