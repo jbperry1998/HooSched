@@ -26,6 +26,8 @@
 		if(isset($org_ID)){
 			$query_2 = "INSERT INTO admin VALUES('$org_ID','$user_ID')";
 			$result_2 = pg_query($db_connection,$query_2);
+			$_SESSION['user_type'] = "admin";
+			$_SESSION['org_id'] = $org_ID;
 			if(result_2){
 				header('Location: rescalendar.html');
 			}
