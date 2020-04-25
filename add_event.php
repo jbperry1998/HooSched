@@ -51,8 +51,16 @@
 			$query_2 = "INSERT INTO community VALUES('$event_ID','$user_ID','$owner_ID','$size','$venue')";
     		$result_2 = pg_query($db_connection,$query_2);
 		}
-		$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
 		
+		$user_status = $_SESSION['user_type'];
+		$org_id = $_SESSION['org_id'];
+		if (strcmp($user_status, "admin") == 0) {
+			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end', '$org_id')";
+		}
+		else {
+			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
+		}
+
 		$result = pg_query($db_connection, $query);
 		
 		$query_3 = "INSERT INTO makes VALUES('$user_ID','$event_ID')";

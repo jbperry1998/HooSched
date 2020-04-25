@@ -46,6 +46,8 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 //$state = $_POST['state'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
+$school = $_POST['school'];
+$org_ID = $_POST['org_ID'];
 
 $query = "SELECT* FROM site_users WHERE username='$username'";
 $result = pg_query($db_connection,$query);
@@ -60,6 +62,30 @@ if(!$user) {
 		$_SESSION['user_table'] = pq_escape_string($_POST['username']);
 		//$_SESSION['email'] = $email;
 		$_SESSION['logged_in'] = "logged_in";
+		$_SESSION['user_type'] = "";
+		$_SESSION['org_id'] = "";
+
+		if(isset($school)){
+			//insert username and school into students table
+			$query_3 = "INSERT INTO student VALUES('$user_ID','$school')";
+			$result_3 = pg_query($db_connection,$query_3);
+			$_SESSION['user_type'] = "student";
+			#if(result_3){
+			#	header('Location: calendar.html');
+			#}
+			
+
+		}
+		if(isset($org_ID)){
+			$query_2 = "INSERT INTO admin VALUES('$org_ID','$user_ID')";
+			$result_2 = pg_query($db_connection,$query_2);
+			$_SESSION['user_type'] = "admin";
+			$_SESSION['org_id'] = $org_ID;
+			#if(result_2){
+			#	header('Location: rescalendar.html');
+			#}
+		}
+
 		header('Location: rescalendar.html');
    
     //change to homepage for members
