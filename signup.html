@@ -12,60 +12,6 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<script>
-	var FormStuff = {
-  
-  init: function() {
-    this.applyConditionalRequired();
-    this.bindUIActions();
-  },
-  
-  bindUIActions: function() {
-    $("input[type='radio'], input[type='checkbox']").on("change", this.applyConditionalRequired);
-  },
-  
-  applyConditionalRequired: function() {
-    
-    $(".require-if-active").each(function() {
-      var el = $(this);
-      if ($(el.data("require-pair")).is(":checked")) {
-        el.prop("required", true);
-      } else {
-        el.prop("required", false);
-      }
-    });
-    
-  }
-  
-};
-
-FormStuff.init();
-</script>
-
-<style>
-.reveal-if-active {
-	 opacity: 0;
-	 max-height: 0;
-	 overflow: hidden;
-	 font-size: 16px;
-	 transform: scale(0.8);
-	 transition: 0.5s;
-}
- .reveal-if-active label {
-	 display: block;
-	 margin: 0 0 3px 0;
-}
- .reveal-if-active input[type=text] {
-	 width: 100%;
-}
- input[type="radio"]:checked ~ .reveal-if-active, input[type="checkbox"]:checked ~ .reveal-if-active {
-	 opacity: 1;
-	 max-height: 100px;
-	 padding: 10px 20px;
-	 transform: scale(1);
-	 overflow: visible;
-}
-</style>
 <body class="is-preload">
 	<div id="page-wrapper">
 
@@ -132,25 +78,6 @@ FormStuff.init();
 							password.onchange = validatePassword;
 							confirm_password.onkeyup = validatePassword;
 						</script>
-						<br>
-						<div class="col-6 col-12-mobilep">
-							<input type="radio" name="choice-type" id="choice-student" required>
-							<label for="choice-student">Student</label>
-					
-							<div class="reveal-if-active">
-								<label for="school">What School do you attend?</label>
-								<input type="text" id="school" name="school" class="require-if-active" data-require-pair="#choice-student">
-							</div>
-						</div>
-						<div class="col-6 col-12-mobilep">
-							<input type="radio" name="choice-type" id="choice-admin">
-							<label for="choice-admin">Admin</label>
-					
-							<div class="reveal-if-active">
-								<label for="org_ID">What organization are you admin of?</label>
-								<input type="text" id="org_ID" name="org_ID" class="require-if-active" data-require-pair="#choice-admin">
-							</div>
-						</div>
 						<div class="col-12">
 							<ul class="actions special">
 								<li><input type="submit" value="Submit" /></li>

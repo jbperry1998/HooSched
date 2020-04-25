@@ -18,7 +18,7 @@
 			$query_1 = "INSERT INTO student VALUES('$user_ID','$school')";
 			$result_1 = pg_query($db_connection,$query_1);
 			if(result_1){
-				header('Location: calendar.html');
+				header('Location: rescalendar.html');
 			}
 			
 

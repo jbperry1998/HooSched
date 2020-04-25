@@ -1,11 +1,11 @@
 <?php
 session_start();
-$servername = "ec2-174-129-227-80.compute-1.amazonaws.com";
+/*$servername = "ec2-174-129-227-80.compute-1.amazonaws.com";
 $name = "zdlwovjrekrdar";
 $password = "ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5";
 $dbname = "dbvs140f5cqkp1";
-$username = $_POST['username'];
-try {
+$username = $_POST['username'];*/
+/*try {
 	$conn = new PDO("pgsql:host=$servername;port=5432;dbname=$dbname", $name, $password);
 	// set the PDO error mode to exception
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -29,7 +29,7 @@ catch(PDOException $e)
 	echo $sql . "<br>" . $e->getMessage();
 	}
 	//$conn = null;
-
+*/
 $db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
  port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
 ");
@@ -46,8 +46,6 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 //$state = $_POST['state'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
-$school = $_POST['school'];
-$org_ID = $_POST['org_ID'];
 
 $query = "SELECT* FROM site_users WHERE username='$username'";
 $result = pg_query($db_connection,$query);
@@ -63,10 +61,6 @@ if(!$user) {
 		//$_SESSION['email'] = $email;
 		$_SESSION['logged_in'] = "logged_in";
 		#$_SESSION['user_type'] = "";
-
-		echo $org_ID;
-		echo $school;
-
 		/*
 		if(isset($school)){
 			//insert username and school into students table
@@ -91,7 +85,7 @@ if(!$user) {
 			echo $org_ID;
 		}*/
     //change to homepage for members
-    header('Location: rescalendar.html');
+    header('Location: settings.html');
 }else{
     header('Location: index.html');
 }
