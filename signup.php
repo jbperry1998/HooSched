@@ -62,8 +62,7 @@ if(!$user) {
 		$_SESSION['user_table'] = pq_escape_string($_POST['username']);
 		//$_SESSION['email'] = $email;
 		$_SESSION['logged_in'] = "logged_in";
-		$_SESSION['user_type'] = "h";
-		$_SESSION['org_id'] = "h";
+		$_SESSION['user_type'] = "";
 
 		if(isset($school)){
 			//insert username and school into students table
@@ -75,6 +74,7 @@ if(!$user) {
 			#}
 		}
 		if(isset($org_ID)){
+			echo 'org id exists';
 			$query_2 = "INSERT INTO admin VALUES('$org_ID','$username')";
 			$result_2 = pg_query($db_connection,$query_2);
 			$_SESSION['user_type'] = "admin";
@@ -83,6 +83,9 @@ if(!$user) {
 			#	header('Location: rescalendar.html');
 			#}
 		}   
+		else {
+			echo $org_ID;
+		}
     //change to homepage for members
     header('Location: rescalendar.html');
 }else{
