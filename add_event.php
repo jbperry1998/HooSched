@@ -58,7 +58,7 @@
 		$result_4 = pg_query($db_connection, $query_4);
 		if($result_4) {
 			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
-			$query_5 = "UPDATE events SET org_id=(SELECT org_id FROM admin WHERE username='$user_ID')";
+			$query_5 = "UPDATE events SET org_id=(SELECT org_id FROM admin WHERE username='$user_ID') WHERE user_id='$user_ID'";
 		}
 		else {
 			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
