@@ -11,7 +11,7 @@ try {
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	// sql to create table
 	$sql = "CREATE TABLE IF NOT EXISTS $username(
-		event_ID character varying(50) NOT NULL,
+		event_id character varying(50) NOT NULL,
 		name character varying(50) NOT NULL,
 		date date NOT NULL,
 		description character varying(100) NOT NULL,
