@@ -64,6 +64,10 @@ if(!$user) {
 		$_SESSION['logged_in'] = "logged_in";
 		#$_SESSION['user_type'] = "";
 
+		echo $org_ID;
+		echo $school;
+
+		/*
 		if(isset($school)){
 			//insert username and school into students table
 			$query_3 = "INSERT INTO student VALUES('$username','$school')";
@@ -85,7 +89,7 @@ if(!$user) {
 		}   
 		else {
 			echo $org_ID;
-		}
+		}*/
     //change to homepage for members
     header('Location: rescalendar.html');
 }else{
