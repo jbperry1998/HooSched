@@ -57,12 +57,14 @@
 		$query_4 = "SELECT org_id FROM admin WHERE username='$user_ID'";
 		$result_4 = pg_query($db_connection, $query_4);
 		if($result_4) {
-			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end','$result_4')";
+			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
+			$query_5 = "UPDATE events SET org_id=(SELECT org_id FROM admin WHERE username='$user_ID')";
 		}
 		else {
 			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
 		}
 		$result = pg_query($db_connection, $query);
+		$result_5 = pg_query($db_connection, $query_5);
 		
 		$query_3 = "INSERT INTO makes VALUES('$user_ID','$event_ID')";
 		$result_3 = pg_query($db_connection, $query_3);
