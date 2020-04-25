@@ -1,5 +1,6 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
 /*$servername = "ec2-174-129-227-80.compute-1.amazonaws.com";
 $name = "zdlwovjrekrdar";
 $password = "ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5";
