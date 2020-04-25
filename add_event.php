@@ -21,9 +21,9 @@
 		$start_date = date('Y-m-d', strtotime($date));
 		
 		$start = $_POST['start_time'];
-		$start = date('Y-m-d H:i:s', strtotime($start));
+		$start = date('Y-m-d H:i:s', strtotime($date), strtotime($start));
 		$end = $_POST['end_time'];
-		$end = date('Y-m-d H:i:s', strtotime($end));
+		$end = date('Y-m-d H:i:s', strtotime($date), strtotime($end));
 		#$start_date = $_POST['date'];
 		#$start_date = date('Y-m-d H:i:s', strtotime($date));
 		$description = $_POST['description'];
