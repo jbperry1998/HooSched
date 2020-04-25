@@ -51,10 +51,13 @@
     		$result_2 = pg_query($db_connection,$query_2);
 		}
 		
-		$user_status = $_SESSION['user_type'];
-		$org_id = $_SESSION['org_id'];
-		if (strcmp($user_status, "admin") == 0) {
-			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end','$org_id')";
+		#$user_status = $_SESSION['user_type'];
+		#$org_id = $_SESSION['org_id'];
+		#if (strcmp($user_status, "admin") == 0) {
+		$query_4 = "SELECT org_id FROM admin WHERE username='$user_ID'";
+		$result_4 = pg_query($db_connection, $query_4);
+		if($result_4) {
+			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end','$result_4')";
 		}
 		else {
 			$query = "INSERT INTO events VALUES('$event_ID','$user_ID','$name','$start_date','$description','$frequency','$start','$end')";
