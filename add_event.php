@@ -8,7 +8,7 @@
 			header('Location: elements.html');
 		}
 		$user_ID = $_SESSION['username'];
-		$user_table = $_SESSSION['user_table'];
+		#$user_table = $_SESSSION['user_table'];
 		// $name = $_SESSION['name'];
 
 		$event_ID = $_POST['event_ID'];

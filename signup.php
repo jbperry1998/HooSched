@@ -58,7 +58,7 @@ if(!$user) {
     $query_1 = "INSERT INTO site_users VALUES('$first_name','$last_name','$username','$hashed_password','$username')";
 	$result_1 = pg_query($db_connection,$query_1);
 	 $_SESSION['username'] = $username;
-		$_SESSION['user_table'] = pq_escape_string($_POST['username']);
+		#$_SESSION['user_table'] = pq_escape_string($_POST['username']);
 		//$_SESSION['email'] = $email;
 		$_SESSION['logged_in'] = "logged_in";
 		#$_SESSION['user_type'] = "";
