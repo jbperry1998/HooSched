@@ -62,13 +62,13 @@ if(!$user) {
 		$_SESSION['user_table'] = pq_escape_string($_POST['username']);
 		//$_SESSION['email'] = $email;
 		$_SESSION['logged_in'] = "logged_in";
-		$_SESSION['user_type'] = "";
+		#$_SESSION['user_type'] = "";
 
 		if(isset($school)){
 			//insert username and school into students table
 			$query_3 = "INSERT INTO student VALUES('$username','$school')";
 			$result_3 = pg_query($db_connection,$query_3);
-			$_SESSION['user_type'] = "student";
+			#$_SESSION['user_type'] = "student";
 			#if(result_3){
 			#	header('Location: calendar.html');
 			#}
@@ -77,8 +77,8 @@ if(!$user) {
 			echo 'org id exists';
 			$query_2 = "INSERT INTO admin VALUES('$org_ID','$username')";
 			$result_2 = pg_query($db_connection,$query_2);
-			$_SESSION['user_type'] = "admin";
-			$_SESSION['org_id'] = $org_ID;
+			#$_SESSION['user_type'] = "admin";
+			#$_SESSION['org_id'] = $org_ID;
 			#if(result_2){
 			#	header('Location: rescalendar.html');
 			#}
