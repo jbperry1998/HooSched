@@ -62,7 +62,7 @@ if ( isset($_POST["submit"]) ) {
     	                            $result_1 = pg_query($db_connection,$query);
                                 }
                                 fclose($handle);
-                                print("Import Successful")
+                                print("Import Successful");
                             }
                             
                             else {
