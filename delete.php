@@ -64,7 +64,7 @@
 		");
 		$valueToSearch = $_POST['valueToSearch'];
 		$query="SELECT * FROM events WHERE user_id ='$username'";
-		
+
         $result = pg_query($db_connection, $query);
         echo "<table border='1'>
 								<tr>
@@ -118,8 +118,8 @@
 				</div>
 		</form>
 		</section>
-		
-		
+
+
 	</div>
 
 </body>
