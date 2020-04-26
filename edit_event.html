@@ -96,11 +96,10 @@ FormStuff.init();
 
 		<!-- Header -->
 		<header id="header">
-			<h1><a href="index.html">HooSched</a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="login.html">Log In</a></li>
-					<li><a href="signup.html" class="button">Sign Up</a></li>
+					<li><a href="rescalendar.html">Back to Calendar</a></li>
+					<li><a href="logout.php">Log Out</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -116,6 +115,7 @@ FormStuff.init();
 					<input type="text" name="event_ID" id="event_ID"
 						pattern="[a-z]{3}\d{2}" value="" placeholder="event_ID" required />
 					<p>3 lowercase letters followed by 2 numbers</p>
+					<p>Put the event id of the event that you want to change attributes of</p>
 				</div>
 				<h3>Name</h3>
 				<div class="col-6 col-12-mobilep">
@@ -154,7 +154,7 @@ FormStuff.init();
 						 value="" placeholder="Frequency of Event" required />
 				</div> -->
 
-				<h4>Extracurricular, Community, or Reminder?</h4>
+				<!--<h4>Extracurricular, Community, or Reminder?</h4>
 				<div>
 					<div>
 						<input type="radio" name="choice-type" id="choice-extra" required>
@@ -183,10 +183,10 @@ FormStuff.init();
 							<label for="venue">What is the venue of the event?</label>
 							<input type="text" id="venue" name="venue" class="require-if-active" data-require-pair="#choice-com">
 						</div>
-						<!--<div class="reveal-if-active">
+						<div class="reveal-if-active">
 							<label for="owner_ID">What Organization is the event for?</label>
 							<input type="text" id="owner_ID" name="owner_ID" class="require-if-active" data-require-pair="#choice-com">
-						</div>-->
+						</div>
 
 					</div>
 
@@ -194,7 +194,7 @@ FormStuff.init();
 						<input type="radio" name="choice-type" id="choice-rem">
 						<label for="choice-rem">Reminder</label>
 					</div>
-				</div>
+				</div>-->
 				<div>
 					<input type="submit" value="Submit">
 				</div>

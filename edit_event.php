@@ -9,17 +9,44 @@ if (! strcmp($login_status, "logged_in") == 0) {
   header('Location: elements.html');
 }
 $user_ID = $_SESSION['username'];
-$user_table = $_SESSION['user_table'];
 
-$id = $_POST['event_ID'];
-$title = $_POST['name'];
-$start = $_POST['start_time'];
-$end = $_POST['end_time'];
+$event_id = $_POST['event_ID'];
+$name = $_POST['name'];
 $date = $_POST['date'];
+$start_date = date('Y-m-d', strtotime($date));
+$date_stime = $_POST['date'] + $_POST['start_time'];
+		
+$start = $_POST['start_time'];
+$start = date('Y-m-d H:i:s', strtotime($start));
+#$start = TO_TIMESTAMP($date_stime, 'YYYY-MM-DD HH24:MI:SS');
+$end = $_POST['end_time'];
+$end = date('Y-m-d H:i:s', strtotime($end));
 $description = $_POST['description'];
 
-$sqlUpdate = "UPDATE events SET title='" . $title . "',start='" . $start . "',end='" . $end . "',description='" . $description . "' WHERE id=" . $id;
-$r = pg_query($db_connection, $sqlUpdate);
+if(isset($name)) {
+  $sqlUpdate = "UPDATE events SET name='$name' WHERE event_id='$event_id' AND user_id='$user_ID'";
+  $r = pg_query($db_connection, $sqlUpdate);
+}
+
+if(isset($start)) {
+  $sqlUpdate = "UPDATE events SET start_time='$start' WHERE event_id='$event_id' AND user_id='$user_ID'";
+  $r = pg_query($db_connection, $sqlUpdate);
+}
+
+if(isset($end)) {
+  $sqlUpdate = "UPDATE events SET end_time='$end' WHERE event_id='$event_id' AND user_id='$user_ID'";
+  $r = pg_query($db_connection, $sqlUpdate);
+}
+
+if(isset($start_date)) {
+  $sqlUpdate = "UPDATE events SET date='$start_date' WHERE event_id='$event_id' AND user_id='$user_ID'";
+  $r = pg_query($db_connection, $sqlUpdate);
+}
+
+if(isset($description)) {
+  $sqlUpdate = "UPDATE events SET description='$description' WHERE event_id='$event_id' AND user_id='$user_ID'";
+  $r = pg_query($db_connection, $sqlUpdate);
+}
 
 header('Location: rescalendar.html');
 // mysqli_query($conn, $sqlUpdate)
