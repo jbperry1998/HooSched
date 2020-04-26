@@ -32,14 +32,15 @@ if(isset($fileExport)) {
         fputcsv($data, $headers);  // This adds the data from the header row
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo $row[0];
-                echo $row[1];
-                echo $row[2];
-                echo $row[3];
-                echo $row[4];
-                echo $row[5];
-                echo $row[6];
-                echo $row[7];
+                echo $row['event_id'];
+                echo $row['user_id'];
+                echo $row['name'];
+                echo $row['date'];
+                echo $row['descriptio'];
+                echo $row['frequency'];
+                echo $row['start_time'];
+                echo $row['end_time'];
+                echo $row['org_id'];
                 fputcsv($data, $row);
             }
 
