@@ -14,7 +14,7 @@
 	// prepare execute the query
     $query = "SELECT * FROM events WHERE user_ID = '$user_ID' 
 			  UNION 
-			  SELECT * FROM events WHERE org_ID IN (SELECT org_ID FROM subscribes WHERE user_ID = '$user_ID'";
+			  SELECT * FROM events WHERE org_ID IN (SELECT org_ID FROM subscribes WHERE user_ID = '$user_ID')";
 	$statement = pg_query($db_connection, $query);
 	
 	// fetch all rows from statement as an array 
