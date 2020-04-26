@@ -90,6 +90,29 @@ if(isset($fileExport)) {
             fputcsv($fp, $row);
         }
     }
+    else if(strcmp($fileExport, "json") == 0) {
+        $filename = "test_postgres.json";
+        $query = "SELECT * FROM events WHERE user_id ='$username'"; 
+        $result = pg_query($conn, $query);
+        $json_array = array();  
+        while($row = pg_fetch_assoc($result)) {
+            $json_array[] = $row;  
+        }  
+        /*echo '<pre>';  
+        print_r(json_encode($json_array));  
+        echo '</pre>';*/  
+        ob_start();
+        //echo "<div>";
+        //echo "Foobar";
+        //echo "</div>";
+        echo json_encode($json_array);
+        //  Return the contents of the output buffer
+        $htmlStr = ob_get_contents();
+        // Clean (erase) the output buffer and turn off output buffering
+        ob_end_clean(); 
+        // Write final string to file
+        file_put_contents($fileName, $htmlStr);
+    }
 }
 
 ?>
