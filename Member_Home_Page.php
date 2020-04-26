@@ -30,7 +30,7 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="rescalendar.html">Back to Calendar</a></li>
-					<li><a href="logout.html">Log Out</a></li>
+					<li><a href="logout.php">Log Out</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -94,6 +94,7 @@
 								<th>frequency</th>
 								<th>start_time</th>
 								<th>end_time</th>
+								<th>org_id</th>
 
 								</tr>";
         if (pg_num_rows($result) == 0) {
@@ -112,6 +113,7 @@
 				echo "<td>" . $row[5] . "</td>";
 				echo "<td>" . $row[6] . "</td>";
 				echo "<td>" . $row[7] . "</td>";
+				echo "<td>" . $row[8] . "</td>";
                 echo "</tr>";
             }
         }
