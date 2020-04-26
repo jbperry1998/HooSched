@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
-    <link rel="stylesheet" href="fullcalendar/fullcalendar.min.css" />
-    <script src="fullcalendar/lib/jquery.min.js"></script>
-    <script src="fullcalendar/lib/moment.min.js"></script>
-    <script src="fullcalendar/fullcalendar.min.js"></script>
+<link rel="stylesheet" href="fullcalendar/fullcalendar.min.css" />
+<script src="fullcalendar/lib/jquery.min.js"></script>
+<script src="fullcalendar/lib/moment.min.js"></script>
+<script src="fullcalendar/fullcalendar.min.js"></script>
 
 <body>
 
@@ -16,4 +16,33 @@
 </form>
 
 </body>
+</style>
+</head>
+<body>
+	<header id="header" class="alt">
+		<h1><a href="index.html">HooSched</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="rescalendar.html">Back to Calendar</a></li>
+					<li><a href="logout.php">Log Out</a></li>
+				</ul>
+			</nav>
+	</header>
+	
+    <div class="response"></div>
+
+		<form name="export" action="export.php" method="post">
+			<div class="sortFilter">
+			<select name="fileToExport">
+			   <option value="choose">Make A Selection</option>
+			   <option value="csv">Csv</option>
+			   <!--<option value="json">Json</option>-->
+			</select>
+			<input type="submit" value=" Export " class="dropbtn"/>
+			</div>
+		</form>
+	<div id='calendar'></div>
+</body>
+
+
 </html>
