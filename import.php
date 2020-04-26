@@ -59,6 +59,8 @@ session_start();
 		if (! strcmp($login_status, "logged_in") == 0) {
 			header('Location: elements.html');
 		}
-
+        
+        $query = "SELECT * INTO class FROM OPENROWSET(BULK 'C:\...\$target_file', SINGLE_CLOB) AS DATA;";
+    	$result_1 = pg_query($db_connection,$query);
 
 ?>
