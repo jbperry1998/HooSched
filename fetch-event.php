@@ -21,7 +21,7 @@
 	$result = pg_fetch_all($statement);
 	
 	foreach($result as $row) {
-		/*if ($row["event_id"][0] == "e") {
+		if ($row["event_id"][0] == "e") {
 			$color = '#3b3342';
 		} else if ($row["event_id"][0] == "c") {
 			$color = '#566a73';
@@ -29,12 +29,12 @@
 			$color = '#e5cb95';
 		} else {
 			$color = '#95ada6';
-		}*/
+		}
 		$eventArray[] = array(
 			'id'    => $row["event_id"],
 			'title' => $row["name"],
 			'date' => $row["date"]
-			//'backgroundColor' => $color
+			'backgroundColor' => $color
 		);
     }
 
