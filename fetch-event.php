@@ -22,14 +22,13 @@
 	
 	foreach($result as $row) {
 		$curr_id = $row["event_id"];
+		$color = '#95ada6';
 		if ($curr_id[0] == "e") {
 			$color = '#3b3342';
 		} else if ($curr_id[0] == "c") {
 			$color = '#566a73';
 		} else if ($curr_id[0] == "r") {
 			$color = '#e5cb95';
-		} else {
-			$color = '#95ada6';
 		}
 		$eventArray[] = array(
 			'id'    => $row["event_id"],
