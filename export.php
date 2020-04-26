@@ -31,16 +31,30 @@ if(isset($fileExport)) {
         $data = fopen($filename, 'a');
         fputcsv($data, $headers);  // This adds the data from the header row
 
+        echo "					<tr>
+								<th>event_ID</th>
+								<th>user_ID</th>
+								<th>name</th>
+								<th>date</th>
+								<th>description</th>
+								<th>frequency</th>
+								<th>start_time</th>
+								<th>end_time</th>
+
+								</tr>";
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo $row['event_id'];
-                echo $row['user_id'];
-                echo $row['name'];
-                echo $row['date'];
-                echo $row['description'];
-                echo $row['frequency'];
-                echo $row['start_time'];
-                echo $row['end_time'];
-                echo $row['org_id'];
+                echo "<tr>";
+                echo "<td>" . $row['event_id'] . "</td>";
+				echo "<td>" . $row['user_id'] . "</td>";
+				echo "<td>" . $row['name'] . "</td>";
+				echo "<td>" . $row['date'] . "</td>";
+				echo "<td>" . $row['description'] . "</td>";
+				echo "<td>" . $row['frequency'] . "</td>";
+				echo "<td>" . $row['start_time'] . "</td>";
+                echo "<td>" . $row['end_time'] . "</td>";
+                echo "<td>" . $row['org_id'] . "</td>";
+                echo "</tr>";
+                echo "<br>";
                 fputcsv($data, $row);
             }
 
