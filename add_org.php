@@ -9,7 +9,7 @@
 		}
 		$user_ID = $_SESSION['username'];
 		// $name = $_SESSION['name'];
-
+		
 		$org_ID = $_POST['org_ID'];
 		$name = $_POST['name'];
         $field = $_POST['field'];	
@@ -18,6 +18,8 @@
 		$result = pg_query($db_connection, $query);
 		$query_3 = "INSERT INTO organization_members VALUES('$org_ID','$user_ID')";
 		$result_3 = pg_query($db_connection, $query_3);
+		$query_2 = "INSERT INTO admin VALUES('$org_ID','$user_ID')";
+		$result_2 = pg_query($db_connection,$query_2);
 		header('Location: rescalendar.html');
 
 ?>
