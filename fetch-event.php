@@ -33,7 +33,7 @@
 		$eventArray[] = array(
 			'id'    => $row["event_id"],
 			'title' => $row["name"],
-			'date' => $row["date"]
+			'date' => $row["date"],
 			'backgroundColor' => $color
 		);
     }
