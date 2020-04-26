@@ -36,7 +36,7 @@ if(isset($fileExport)) {
                 echo $row['user_id'];
                 echo $row['name'];
                 echo $row['date'];
-                echo $row['descriptio'];
+                echo $row['description'];
                 echo $row['frequency'];
                 echo $row['start_time'];
                 echo $row['end_time'];
