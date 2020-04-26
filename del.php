@@ -11,7 +11,7 @@
 		$user_table = $_SESSSION['user_table'];
 		// $name = $_SESSION['name'];
 		$event_ID = $_POST['event_ID'];
-		$q = "DELETE from events WHERE  user_id ='$username' AND event_id = '$event_ID'";
+		$q = "DELETE FROM events WHERE  event_id ='$event_ID' AND user_id = '$user_ID'";
 		
 		$r = pg_query($db_connection, $q);
 
