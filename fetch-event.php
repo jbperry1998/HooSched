@@ -12,19 +12,30 @@
     $eventArray = array();
 	
 	// prepare execute the query
-    $query = "SELECT * FROM events WHERE user_ID = '$user_ID'";
+    $query = "SELECT * FROM events WHERE user_ID = '$user_ID'
+	          UNION
+			  SELECT * FROM events WHERE org_ID IN 
+				(SELECT * FROM subscribes WHERE user_ID = '$user_ID'";
 	$statement = pg_query($db_connection, $query);
 	
 	// fetch all rows from statement as an array 
 	$result = pg_fetch_all($statement);
 	
 	foreach($result as $row) {
+		if ($row["event_id"][0] == "e") {
+			$color = '#3b3342';
+		} else if ($row["event_id"][0] == "c") {
+			$color = '#566a73';
+		} else if ($row["event_id"][0] == "r") {
+			$color = '#e5cb95';
+		} else {
+			$color = '#95ada6';
+		}
 		$eventArray[] = array(
 			'id'    => $row["event_id"],
 			'title' => $row["name"],
-			#'start' => $row["start_time"],
-			#'end'   => $row["end_time"]
-			'date' => $row["date"]
+			'date' => $row["date"],
+			'backgroundColor' => $color
 		);
     }
 
