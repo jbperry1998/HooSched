@@ -22,19 +22,20 @@
 	
 	foreach($result as $row) {
 		$curr_id = $row["event_id"];
-		$color = '#95ada6';
+		$color = '#67c7ab';
 		if ($curr_id[0] == "e") {
 			$color = '#3b3342';
 		} else if ($curr_id[0] == "c") {
-			$color = '#566a73';
+			$color = '#6685cc';
 		} else if ($curr_id[0] == "r") {
-			$color = '#e5cb95';
+			$color = '#e3a820';
 		}
 		$eventArray[] = array(
 			'id'    => $row["event_id"],
 			'title' => $row["name"],
 			'date' => $row["date"],
 			'backgroundColor' => $color
+			'borderColor' => $color
 		);
     }
 
