@@ -58,21 +58,23 @@ if ( isset($_POST["submit"]) ) {
                                     $end_time = data[4];
                                     $days = data[5];
                                     $teacher = data[6];
-                                    $query = "Insert INTO class(class_ID, className, location, start_time, end_time, days, teacher) values('$class_ID', '$className', '$location', '$start_time', '$end_time', '$days', '$teacher')";
+                                    $query = "INSERT INTO class(class_ID, className, location, start_time, end_time, days, teacher) VALUES('".$class_ID."', '".className."', '".$location."', '".$start_time."', '".$end_time."', '".$days."', '".$teacher."')";
     	                            $result_1 = pg_query($db_connection,$query);
                                 }
                                 fclose($handle);
                                 print("Import Successful")
-                            } 
+                            }
+                            
                             else {
                                 echo "Sorry, there was an error uploading your file.";
                             }
-                        }
+                        } 
                     }
                 }
             }
-        } 
-    }
-}        
+        }
+    } 
+}
+       
 
 ?>
