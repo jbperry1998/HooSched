@@ -1,4 +1,13 @@
 <?php
+session_start();
+$db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
+		port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
+		");
+		$login_status = $_SESSION['logged_in'];
+		if (! strcmp($login_status, "logged_in") == 0) {
+			header('Location: elements.html');
+		}
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -39,6 +48,21 @@ if ( isset($_POST["submit"]) ) {
                         else{
                             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                                 echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+
+                                $handle = fopen($target_file, "r");
+                                while($data = fgetcsv($handle)){
+                                    $class_ID = data[0];
+                                    $className = data[1];
+                                    $location = data[2];
+                                    $start_time = data[3];
+                                    $end_time = data[4];
+                                    $days = data[5];
+                                    $teacher = data[6];
+                                    $query = "Insert INTO class(class_ID, className, location, start_time, end_time, days, teacher) values('$class_ID', '$className', '$location', '$start_time', '$end_time', '$days', '$teacher')";
+    	                            $result_1 = pg_query($db_connection,$query);
+                                }
+                                fclose($handle);
+                                print("Import Successful")
                             } 
                             else {
                                 echo "Sorry, there was an error uploading your file.";
@@ -49,18 +73,6 @@ if ( isset($_POST["submit"]) ) {
             }
         } 
     }
-}
-
-session_start();
-		$db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
-		port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
-		");
-		$login_status = $_SESSION['logged_in'];
-		if (! strcmp($login_status, "logged_in") == 0) {
-			header('Location: elements.html');
-		}
-        
-        $query = "SELECT * INTO class FROM OPENROWSET(BULK 'C:\...\$target_file', SINGLE_CLOB) AS DATA;";
-    	$result_1 = pg_query($db_connection,$query);
+}        
 
 ?>
