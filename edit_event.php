@@ -18,7 +18,7 @@ $end = $_POST['end_time'];
 $date = $_POST['date'];
 $description = $_POST['description'];
 
-$sqlUpdate = "UPDATE tbl_events SET title='" . $title . "',start='" . $start . "',end='" . $end . "',description='" . $description . "' WHERE id=" . $id;
+$sqlUpdate = "UPDATE events SET title='" . $title . "',start='" . $start . "',end='" . $end . "',description='" . $description . "' WHERE id=" . $id;
 $r = pg_query($db_connection, $sqlUpdate);
 
 header('Location: rescalendar.html');
