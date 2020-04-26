@@ -9,7 +9,7 @@ if (! strcmp($login_status, "logged_in") == 0) {
   header('Location: elements.html');
 }
 $user_ID = $_SESSION['username'];
-$user_table = $_SESSSION['user_table'];
+$user_table = $_SESSION['user_table'];
 
 $id = $_POST['event_ID'];
 $title = $_POST['name'];
