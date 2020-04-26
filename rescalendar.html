@@ -18,10 +18,8 @@ $(document).ready(function () {
 		customButtons: {
 			exportButton: {
 			  text: 'export',
-			  click: function() {
-				alert('this should export calendar data');
-			  }
-			},
+			  click: function(event, jsEvent, view) {
+				window.location.href = 'export_file.html';
 			addButton: {
 			  text: 'Subscribe',
 			  click: function(event, jsEvent, view) {
