@@ -12,6 +12,7 @@ if(isset($fileExport)) {
     if(strcmp($fileExport, "csv") == 0) {
         $conn = new PDO("pgsql:host=$servername;port=5432;dbname=$dbname", $name, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo $username;
         $stmt = $conn->prepare("SELECT * FROM events WHERE user_id ='$username'");
         $stmt->execute();
 
