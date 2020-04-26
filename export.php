@@ -90,11 +90,11 @@ if(isset($fileExport)) {
             fputcsv($fp, $row);
         }
     }
-    else if(strcmp($fileExport, "json") == 0) {
+    /*else if(strcmp($fileExport, "json") == 0) {
 
         $query="SELECT row_to_json(row) FROM (SELECT * FROM events WHERE user_id ='$username') row";
         $result = pg_query($conn, $query);
-
+*/
         /*$filename = "test_postgres.json";
         $query = "SELECT * FROM events WHERE user_id ='$username'"; 
         $result = pg_query($conn, $query);
@@ -117,7 +117,7 @@ if(isset($fileExport)) {
         // Write final string to file
         file_put_contents($filename, $htmlStr);
         */
-    }
+   // }
 }
 
 ?>
