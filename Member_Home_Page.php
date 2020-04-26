@@ -63,16 +63,24 @@
 		port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
 		");
 		$valueToSearch = $_POST['valueToSearch'];
-		$query="SELECT * FROM events WHERE user_id ='$username'";
+		$query="SELECT * FROM events WHERE user_id = '$username' 
+		UNION 
+		SELECT * FROM events WHERE org_ID IN (SELECT org_ID FROM subscribes WHERE user_id = '$username')";;
 		if(isset($valueToSearch)) {
 			if(strcmp($valueToSearch, "Community") == 0) {
-				$query = "SELECT * FROM events WHERE event_id LIKE 'c%' AND user_id ='$username'";
+				$query = "SELECT * FROM events WHERE event_id LIKE 'c%' AND user_id = '$username'
+				UNION 
+				SELECT * FROM events WHERE event_id LIKE 'c%' AND org_id IN (SELECT org_id FROM subscribes WHERE user_id = '$username')";
 			}
 			else if(strcmp($valueToSearch, "Extracurricular") == 0) {
-				$query = "SELECT * FROM events WHERE event_id LIKE 'e%' AND user_id = '$username'";
+				$query = "SELECT * FROM events WHERE event_id LIKE 'e%' AND user_id = '$username'
+				UNION 
+				SELECT * FROM events WHERE event_id LIKE 'e%' AND org_id IN (SELECT org_id FROM subscribes WHERE user_id = '$username')";
 			}
 			else if(strcmp($valueToSearch, "Reminder") == 0) {
-				$query = "SELECT * FROM events WHERE event_id LIKE 'r%' AND user_id = '$username'";
+				$query = "SELECT * FROM events WHERE event_id LIKE 'r%' AND user_id = '$username'
+				UNION 
+				SELECT * FROM events WHERE event_id LIKE 'r%' AND org_id IN (SELECT org_id FROM subscribes WHERE user_id = '$username')";
 			}
 		}
 
@@ -80,7 +88,9 @@
 		{
 			$valueToSearch = $_POST['valueToSort'];
 			#if valueToSort == Event Type
-			$query = "SELECT * FROM events WHERE user_id = '$username' ORDER BY event_ID";
+			$query = "SELECT * FROM events WHERE user_id = '$username' 
+			UNION 
+			SELECT * FROM events WHERE org_ID IN (SELECT org_ID FROM subscribes WHERE user_id = '$username') ORDER BY event_ID";
 		}
 
         $result = pg_query($db_connection, $query);
