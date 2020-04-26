@@ -12,7 +12,6 @@ if(isset($fileExport)) {
     if(strcmp($fileExport, "csv") == 0) {
         $conn = new PDO("pgsql:host=$servername;port=5432;dbname=$dbname", $name, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo $username;
         $stmt = $conn->prepare("SELECT * FROM events WHERE user_id ='$username'");
         $stmt->execute();
 
@@ -33,6 +32,14 @@ if(isset($fileExport)) {
         fputcsv($data, $headers);  // This adds the data from the header row
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo $row[0];
+                echo $row[1];
+                echo $row[2];
+                echo $row[3];
+                echo $row[4];
+                echo $row[5];
+                echo $row[6];
+                echo $row[7];
                 fputcsv($data, $row);
             }
 
