@@ -198,6 +198,10 @@ h2 {
   font-weight: bold;
 }
 
+form{
+    display:inline-block;
+}
+
 /* Header */
 
 	#page-wrapper {
@@ -574,39 +578,39 @@ h2 {
 </head>
 <body>
 	<header id="header" class="alt">
-		<h1><a href="index.html">HooSched</a></h1>
+		<h1><a href="index.html" style="font-size: 24px; text-decoration: none;">HooSched</a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="org.html" class="button">Make an Organization</a></li>
-					<li><a href="settings.html" class="button">Settings</a></li>
+					<li><a href="org.html" class="button" style="text-decoration: none;">Make an Organization</a></li>
+					<li><a href="settings.html" class="button" style="text-decoration: none;">Settings</a></li>
 					<li><a href="logout.php">Log Out</a></li>
 				</ul>
 			</nav>
 	</header>
 
     <div class="response"></div>
-
-		<form name="filter" action="Member_Home_Page.php" method="post">
-			<div class="sortFilter">
-			<select name="valueToSearch">
-			   <option value="choose">Make A Selection</option>
-			   <option value="Community">Community</option>
-			   <option value="Extracurricular">Extracurricular</option>
-			   <option value="Reminder">Reminder</option>
-			</select>
-			<input type="submit" value=" Filter " class="dropbtn"/>
-			</div>
-		</form>
-
-		<form name="sort" action="Member_Home_Page.php" method="post">
-			<div class="sortFilter">
-			<select name="valueToSort">
-			   <option value="choose">Make A Selection</option>
-			   <option value="eventid">Event ID</option>
-			</select>
-			<input type="submit" value=" Sort " class="dropbtn" />
-			</div>
-		</form>
+		<div style="text-align: center; ">
+			<form name="filter" action="Member_Home_Page.php" method="post">
+				<div class="sortFilter">
+				<select name="valueToSearch">
+				   <option value="choose">Make A Selection</option>
+				   <option value="Community">Community</option>
+				   <option value="Extracurricular">Extracurricular</option>
+				   <option value="Reminder">Reminder</option>
+				</select>
+				<input type="submit" value=" Filter " class="dropbtn"/>
+				</div>
+			</form>
+			<form name="sort" action="Member_Home_Page.php" method="post">
+				<div class="sortFilter">
+				<select name="valueToSort">
+				   <option value="choose">Make A Selection</option>
+				   <option value="eventid">Event ID</option>
+				</select>
+				<input type="submit" value=" Sort " class="dropbtn" />
+				</div>
+			</form>
+		</div>
 
 		<!--<form method="post" action="filter.php">
 		<div class="dropdown">
