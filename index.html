@@ -10,26 +10,87 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script>
+		var TxtType = function(el, toRotate, period) {
+			this.toRotate = toRotate;
+			this.el = el;
+			this.loopNum = 0;
+			this.period = parseInt(period, 10) || 2000;
+			this.txt = '';
+			this.tick();
+			this.isDeleting = false;
+		};
+
+		TxtType.prototype.tick = function() {
+			var i = this.loopNum % this.toRotate.length;
+			var fullTxt = this.toRotate[i];
+
+			if (this.isDeleting) {
+			this.txt = fullTxt.substring(0, this.txt.length - 1);
+			} else {
+			this.txt = fullTxt.substring(0, this.txt.length + 1);
+			}
+
+			this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+			var that = this;
+			var delta = 200 - Math.random() * 100;
+
+			if (this.isDeleting) { delta /= 2; }
+
+			if (!this.isDeleting && this.txt === fullTxt) {
+			delta = this.period;
+			this.isDeleting = true;
+			} else if (this.isDeleting && this.txt === '') {
+			this.isDeleting = false;
+			this.loopNum++;
+			delta = 500;
+			}
+
+			setTimeout(function() {
+			that.tick();
+			}, delta);
+		};
+
+		window.onload = function() {
+			var elements = document.getElementsByClassName('typewrite');
+			for (var i=0; i<elements.length; i++) {
+				var toRotate = elements[i].getAttribute('data-type');
+				var period = elements[i].getAttribute('data-period');
+				if (toRotate) {
+				  new TxtType(elements[i], JSON.parse(toRotate), period);
+				}
+			}
+			// INJECT CSS
+			var css = document.createElement("style");
+			css.type = "text/css";
+			css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+			document.body.appendChild(css);
+		};
+		</script>
 	</head>
-	<body class="landing is-preload">
+	<body class="landing is-preload" style="background-color: #e1ebeb;">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1><a href="index.html">HooSched</a></h1>
+					<h1><a href="index.html" style="font-size: 24px;">HooSched</a></h1>
 					<nav id="nav">
 						<ul>
 							<li><a href="login.html">Log In</a></li>
 							<li><a href="signup.html" class="button">Sign Up</a></li>
-							<li><a href="calendar.html" class="button">Demo Calendar</a></li>
 						</ul>
 					</nav>
 				</header>
 
 			<!-- Banner -->
-				<section id="banner">
-					<h2>HooSched</h2>
-					<p>The scheduling application for college students</p>
+				<section id="banner" style="background-image: url('home_images/desk.jpg');">
+					<h2>
+					  <a href="" class="typewrite" data-period="2000" data-type='[ "HooSched", "Organize.", "Communicate.", "Connect." ]'>
+						<span class="wrap"></span>
+					  </a>
+					</h2>
+					<p>Introducing the ultimate online planner for college students</p>
 					<ul class="actions special">
 						<li><a href="signup.html" class="button primary">Sign Up</a></li>
 						<li><a href="login.html" class="button">Login</a></li>
@@ -41,45 +102,48 @@
 
 					<section class="box special">
 						<header class="major">
-							<h2>The Ultimate Planner For College Students</h2>
+							<h2>A calendar for ideas and progress</h2>
+							<p>Sign up today to create a brand-new, customized calendar to stay on top of<br>
+							your most important school meetings and tasks</p>
+							<span class="image featured"><img src="home_images/cal.jpeg" alt="" /></span>
+							<a href="signup.html" class="button">Sign Up Now</a>
 						</header>
-						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
 					</section>
 
 					<section class="box special features">
 						<div class="features-row">
 							<section>
-								<span class="icon solid major fa-book accent2"></span>
-								<h3>Extracurricular</h3>
-								<p>Description</p>
+								<h2>Organization</h2>
+								<span class="icon solid major fa-calendar-alt accent2"></span>
+								<p>Keep all of your events, classes, and reminders in one place</p>
 							</section>
 							<section>
-								<span class="icon solid major fa-caret-square-right accent3"></span>
-								<h3>Community</h3>
-								<p>Description</p>
+								<h2>Simplicity</h2>
+								<span class="icon solid major fa-lightbulb accent3"></span>
+								<p>One simple interface for an infinite number of events</p>
 							</section>
 						</div>
 						<div class="features-row">
 							<section>
-								<span class="icon solid major fa-utensils accent4"></span>
-								<h3>Classes</h3>
-								<p>Description</p>
+								<h2>Mobility</h2>
+								<span class="icon solid major fa-walking accent4"></span>
+								<p>At home or out and about, access your calendar at any time</p>
 							</section>
 							<section>
-								<span class="icon solid major fa-lightbulb accent5"></span>
-								<h3>Other</h3>
-								<p>Description</p>
+								<h2>Exploration</h2>
+								<span class="icon solid major fa-globe accent5"></span>
+								<p>See what others in your community are up to</p>
 							</section>
 						</div>
 					</section>
 				</section>
 
 			<!-- CTA -->
-				<section id="cta">
+				<!--<section id="cta">
 
 					<a href="signup.html" class="button">Sign Up Now</a>
 
-				</section>
+				</section>-->
 
 			<!-- Footer -->
 				<footer id="footer">

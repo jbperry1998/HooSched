@@ -3258,7 +3258,7 @@
 /* Footer */
 
 	#footer {
-		background: #f0f0f0;
+		background: #3b3342;
 		padding: 4em 0 6em 0;
 		text-align: center;
 	}
@@ -3269,6 +3269,7 @@
 			-ms-transition: opacity 0.2s ease-in-out;
 			transition: opacity 0.2s ease-in-out;
 			opacity: 0.35;
+			color: white;
 		}
 
 			#footer .icons a:hover {
