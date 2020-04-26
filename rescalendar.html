@@ -11,11 +11,23 @@
 $(document).ready(function () {
     var calendar = $('#calendar').fullCalendar({
 		header: {
-		  left: 'prev,next today createButton editButton deleteButton',
+		  left: 'prev,next createButton editButton deleteButton classButton',
 		  center: 'title',
-		  right: 'addButton exportButton month,agendaWeek,agendaDay'
+		  right: 'addButton importButton exportButton month,agendaWeek,agendaDay'
 		},
 		customButtons: {
+			importButton: {
+			  text: 'import',
+			  click: function(event, jsEvent, view) {
+				window.location.href = 'import_file.html';
+			  }
+			},
+			classButton: {
+			  text: 'class',
+			  click: function(event, jsEvent, view) {
+				window.location.href = 'add_class.php';
+			  }
+			},
 			exportButton: {
 			  text: 'export',
 			  click: function(event, jsEvent, view) {
