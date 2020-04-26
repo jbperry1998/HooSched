@@ -34,7 +34,7 @@
 			'id'    => $row["event_id"],
 			'title' => $row["name"],
 			'date' => $row["date"],
-			'backgroundColor' => $color
+			'backgroundColor' => $color,
 			'borderColor' => $color
 		);
     }
