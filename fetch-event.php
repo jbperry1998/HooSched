@@ -21,11 +21,12 @@
 	$result = pg_fetch_all($statement);
 	
 	foreach($result as $row) {
-		if ($row["event_id"][0] == "e") {
+		$curr_id = $row["event_id"];
+		if ($curr_id[0] == "e") {
 			$color = '#3b3342';
-		} else if ($row["event_id"][0] == "c") {
+		} else if ($curr_id[0] == "c") {
 			$color = '#566a73';
-		} else if ($row["event_id"][0] == "r") {
+		} else if ($curr_id[0] == "r") {
 			$color = '#e5cb95';
 		} else {
 			$color = '#95ada6';
