@@ -11,7 +11,7 @@
 		$user_table = $_SESSSION['user_table'];
 		// $name = $_SESSION['name'];
 		$org_ID = $_POST['event_ID'];
-		$q = "INSERT INTO organization_members VALUES('$org_ID','$user_ID')";
+		$q = "INSERT INTO subscribes VALUES('$org_ID','$user_ID')";
 		$r = pg_query($db_connection, $q);//should get the event from events
 
 
