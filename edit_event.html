@@ -14,18 +14,18 @@
 </head>
 <script>
 	var FormStuff = {
-  
+
   init: function() {
     this.applyConditionalRequired();
     this.bindUIActions();
   },
-  
+
   bindUIActions: function() {
     $("input[type='radio'], input[type='checkbox']").on("change", this.applyConditionalRequired);
   },
-  
+
   applyConditionalRequired: function() {
-    
+
     $(".require-if-active").each(function() {
       var el = $(this);
       if ($(el.data("require-pair")).is(":checked")) {
@@ -34,9 +34,9 @@
         el.prop("required", false);
       }
     });
-    
+
   }
-  
+
 };
 
 FormStuff.init();
@@ -107,10 +107,10 @@ FormStuff.init();
 
 		<section id="main" class="container medium">
 			<header>
-				<h2>Create Event</h2>
+				<h2>Edit Event</h2>
 			</header>
 			<div class="box">
-			<form method="post" action="add_event.php">
+			<form method="post" action="edit_event.php">
 				<h3>Event ID</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="text" name="event_ID" id="event_ID"
@@ -138,7 +138,7 @@ FormStuff.init();
 				<h3>Date</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="date" name="date"
-						id="date" pattern="^\d{4}[\-\/\s]?((((0[13578])|(1[02]))[\-\/\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\-\/\s]?(([0-2][0-9])|(30)))|(02[\-\/\s]?[0-2][0-9]))$" 
+						id="date" pattern="^\d{4}[\-\/\s]?((((0[13578])|(1[02]))[\-\/\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\-\/\s]?(([0-2][0-9])|(30)))|(02[\-\/\s]?[0-2][0-9]))$"
 						value="" placeholder="2020-04-20"
 						required />
 						<p>YYY-MM-DD</p>
@@ -148,13 +148,18 @@ FormStuff.init();
 					<input type="text" name="description" id="description"
 						 value="" placeholder="Description of Event" required />
 				</div>
-  
+				<h3>Frequency</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="text" name="frequency" id="frequency"
+						 value="" placeholder="Frequency of Event" required />
+				</div>
+
 				<h4>Extracurricular, Community, or Reminder?</h4>
 				<div>
 					<div>
 						<input type="radio" name="choice-type" id="choice-extra" required>
 						<label for="choice-extra">Extracurricular</label>
-						
+
 						<div class="reveal-if-active">
 							<label for="school">What School do you attend?</label>
 							<input type="text" id="school" name="school" class="require-if-active" data-require-pair="#choice-extra">
@@ -165,11 +170,11 @@ FormStuff.init();
 						</div>
 
 					</div>
-					
+
 					<div>
 						<input type="radio" name="choice-type" id="choice-com">
 						<label for="choice-com">Community</label>
-						
+
 						<div class="reveal-if-active">
 							<label for="size">What is the size of the event?</label>
 							<input type="text" id="size" name="size" class="require-if-active" data-require-pair="#choice-com">
@@ -193,12 +198,12 @@ FormStuff.init();
 				<div>
 					<input type="submit" value="Submit">
 				</div>
-					
+
 				</form>
 			</div>
 		</section>
 
-		
+
 
 		<!-- Footer -->
 		<footer id="footer">

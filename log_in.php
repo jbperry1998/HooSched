@@ -26,7 +26,7 @@ if (password_verify($password, $hp)) {
     echo $hp;
     echo "\n";
     echo $password;
-    header('Location: index.html');
+    header('Location: bad_login.html');
 }
 
 // if(!$user) {

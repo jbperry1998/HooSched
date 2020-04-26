@@ -91,16 +91,20 @@ if(isset($fileExport)) {
         }
     }
     else if(strcmp($fileExport, "json") == 0) {
-        $filename = "test_postgres.json";
+
+        $query="SELECT row_to_json(row) FROM (SELECT * FROM events WHERE user_id ='$username') row";
+        $result = pg_query($conn, $query);
+
+        /*$filename = "test_postgres.json";
         $query = "SELECT * FROM events WHERE user_id ='$username'"; 
         $result = pg_query($conn, $query);
         $json_array = array();  
         while($row = pg_fetch_assoc($result)) {
             $json_array[] = $row;  
         }  
-        /*echo '<pre>';  
+        echo '<pre>';  
         print_r(json_encode($json_array));  
-        echo '</pre>';*/  
+        echo '</pre>';
         ob_start();
         //echo "<div>";
         //echo "Foobar";
@@ -112,6 +116,7 @@ if(isset($fileExport)) {
         ob_end_clean(); 
         // Write final string to file
         file_put_contents($filename, $htmlStr);
+        */
     }
 }
 
