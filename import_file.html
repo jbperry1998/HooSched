@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html>
 
+</style>
+</head>
+<body>
+	<header id="header" class="alt">
+		<!--<h1><a href="index.html">HooSched</a></h1>-->
+			<nav id="nav">
+				<ul>
+					<li><a href="rescalendar.html" style="font-size: 16px;">Back to Calendar</a></li>
+					<li><a href="logout.php" style="font-size: 16px;">Log Out</a></li>
+				</ul>
+			</nav>
+	</header>
+	
+    <div class="response"></div>
+
+		<form name="export" action="export.php" method="post">
+			<div class="sortFilter">
+			<select name="fileToExport">
+			   <option value="choose">Make A Selection</option>
+			   <option value="csv">csv</option>
+			   <!--<option value="json">Json</option>-->
+			</select>
+			<input type="submit" value=" Import " class="dropbtn"/>
+			</div>
+		</form>
+	<div id='calendar'></div>
+</body>
+
+
 <head>
 <link rel="stylesheet" href="fullcalendar/fullcalendar.min.css" />
 <script src="fullcalendar/lib/jquery.min.js"></script>
@@ -12,37 +41,9 @@
 <form action="upload.php" method="post" enctype="multipart/form-data">
     Select file to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
+    <input type="submit" value="Upload File" name="submit">
 </form>
 
-</body>
-</style>
-</head>
-<body>
-	<header id="header" class="alt">
-		<h1><a href="index.html">HooSched</a></h1>
-			<nav id="nav">
-				<ul>
-					<li><a href="rescalendar.html">Back to Calendar</a></li>
-					<li><a href="logout.php">Log Out</a></li>
-				</ul>
-			</nav>
-	</header>
-	
-    <div class="response"></div>
-
-		<form name="import" action="import.php" method="post">
-			<div class="sortFilter">
-			<select name="fileToImport">
-			   <option value="choose">Make A Selection</option>
-			   <option value="csv">csv</option>
-			   <!--<option value="json">Json</option>-->
-			</select>
-			<input type="submit" value=" Import " class="dropbtn"/>
-			</div>
-		</form>
-	<div id='calendar'></div>
-</body>
 
 
 </html>
