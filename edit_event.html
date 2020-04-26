@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>Settings - HooSched</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<script>
+	var FormStuff = {
+
+  init: function() {
+    this.applyConditionalRequired();
+    this.bindUIActions();
+  },
+
+  bindUIActions: function() {
+    $("input[type='radio'], input[type='checkbox']").on("change", this.applyConditionalRequired);
+  },
+
+  applyConditionalRequired: function() {
+
+    $(".require-if-active").each(function() {
+      var el = $(this);
+      if ($(el.data("require-pair")).is(":checked")) {
+        el.prop("required", true);
+      } else {
+        el.prop("required", false);
+      }
+    });
+
+  }
+
+};
+
+FormStuff.init();
+</script>
+
+<style>
+.reveal-if-active {
+	 opacity: 0;
+	 max-height: 0;
+	 overflow: hidden;
+	 font-size: 16px;
+	 transform: scale(0.8);
+	 transition: 0.5s;
+}
+ .reveal-if-active label {
+	 display: block;
+	 margin: 0 0 3px 0;
+}
+ .reveal-if-active input[type=text] {
+	 width: 100%;
+}
+ input[type="radio"]:checked ~ .reveal-if-active, input[type="checkbox"]:checked ~ .reveal-if-active {
+	 opacity: 1;
+	 max-height: 100px;
+	 padding: 10px 20px;
+	 transform: scale(1);
+	 overflow: visible;
+}
+ form {
+	 max-width: 500px;
+	 margin: 20px auto;
+}
+ form > div {
+	 margin: 0 0 20px 0;
+}
+ form > div label {
+	 font-weight: bold;
+}
+ form > div > div {
+	 padding: 5px;
+}
+ form > h4 {
+	 color: green;
+	 font-size: 24px;
+	 margin: 0 0 10px 0;
+	 border-bottom: 2px solid green;
+}
+ body {
+	 font-size: 20px;
+}
+ * {
+	 box-sizing: border-box;
+}
+</style>
+<body class="is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="index.html">HooSched</a></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="login.html">Log In</a></li>
+					<li><a href="signup.html" class="button">Sign Up</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<section id="main" class="container medium">
+			<header>
+				<h2>Edit Event</h2>
+			</header>
+			<div class="box">
+			<form method="post" action="edit_event.php">
+				<h3>Event ID</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="text" name="event_ID" id="event_ID"
+						pattern="[a-z]{3}\d{2}" value="" placeholder="event_ID" required />
+					<p>3 lowercase letters followed by 2 numbers</p>
+				</div>
+				<h3>Name</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="text" name="name" id="name"
+						 value="" placeholder="Name of Event" required />
+				</div>
+				<h3>Start Time</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="time" name="start_time" id="start_time"
+						pattern="(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)" value="" placeholder="00:00:00" required />
+						<p>HH:MM:SS</p>
+				</div>
+				<h3>End Time</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="time" name="end_time" id="end_time"
+						pattern="(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)" value=""
+						placeholder="00:00:00" required />
+						<p>HH:MM:SS</p>
+				</div>
+				<h3>Date</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="date" name="date"
+						id="date" pattern="^\d{4}[\-\/\s]?((((0[13578])|(1[02]))[\-\/\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\-\/\s]?(([0-2][0-9])|(30)))|(02[\-\/\s]?[0-2][0-9]))$"
+						value="" placeholder="2020-04-20"
+						required />
+						<p>YYY-MM-DD</p>
+				</div>
+				<h3>Description</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="text" name="description" id="description"
+						 value="" placeholder="Description of Event" required />
+				</div>
+				<h3>Frequency</h3>
+				<div class="col-6 col-12-mobilep">
+					<input type="text" name="frequency" id="frequency"
+						 value="" placeholder="Frequency of Event" required />
+				</div>
+
+				<h4>Extracurricular, Community, or Reminder?</h4>
+				<div>
+					<div>
+						<input type="radio" name="choice-type" id="choice-extra" required>
+						<label for="choice-extra">Extracurricular</label>
+
+						<div class="reveal-if-active">
+							<label for="school">What School do you attend?</label>
+							<input type="text" id="school" name="school" class="require-if-active" data-require-pair="#choice-extra">
+						</div>
+						<div class="reveal-if-active">
+							<label for="location">Where is the event?</label>
+							<input type="text" id="location" name="location" class="require-if-active" data-require-pair="#choice-extra">
+						</div>
+
+					</div>
+
+					<div>
+						<input type="radio" name="choice-type" id="choice-com">
+						<label for="choice-com">Community</label>
+
+						<div class="reveal-if-active">
+							<label for="size">What is the size of the event?</label>
+							<input type="text" id="size" name="size" class="require-if-active" data-require-pair="#choice-com">
+						</div>
+						<div class="reveal-if-active">
+							<label for="venue">What is the venue of the event?</label>
+							<input type="text" id="venue" name="venue" class="require-if-active" data-require-pair="#choice-com">
+						</div>
+						<!--<div class="reveal-if-active">
+							<label for="owner_ID">What Organization is the event for?</label>
+							<input type="text" id="owner_ID" name="owner_ID" class="require-if-active" data-require-pair="#choice-com">
+						</div>-->
+
+					</div>
+
+					<div>
+						<input type="radio" name="choice-type" id="choice-rem">
+						<label for="choice-rem">Reminder</label>
+					</div>
+				</div>
+				<div>
+					<input type="submit" value="Submit">
+				</div>
+
+				</form>
+			</div>
+		</section>
+
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span
+						class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span
+						class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span
+						class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon brands fa-github"><span
+						class="label">Github</span></a></li>
+				<li><a href="#" class="icon brands fa-dribbble"><span
+						class="label">Dribbble</span></a></li>
+				<li><a href="#" class="icon brands fa-google-plus"><span
+						class="label">Google+</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; HooSched. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+</html>
