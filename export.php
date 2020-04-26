@@ -111,7 +111,7 @@ if(isset($fileExport)) {
         // Clean (erase) the output buffer and turn off output buffering
         ob_end_clean(); 
         // Write final string to file
-        file_put_contents($fileName, $htmlStr);
+        file_put_contents($filename, $htmlStr);
     }
 }
 
