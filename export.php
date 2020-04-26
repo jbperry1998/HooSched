@@ -1,7 +1,7 @@
 <?php
 session_start();
 ini_set('display_errors', 1);
-$servername = "ec2-174-129-227-80.compute-1.amazonaws.com";
+/*$servername = "ec2-174-129-227-80.compute-1.amazonaws.com";
 $name = "zdlwovjrekrdar";
 $password = "ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5";
 $dbname = "dbvs140f5cqkp1";
@@ -60,5 +60,36 @@ if(isset($fileExport)) {
 
         fclose($data);
     }
+}*/
+
+$conn = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
+ port=5432 dbname=dbvs140f5cqkp1 user=zdlwovjrekrdar password=ea1a662a2d7df06996a35f5aee8b2ac1d852cbe10af9af3c5cc60b41ee0d21f5
+");
+
+$username = $_SESSION['username'];
+$fileExport = $_POST['fileToExport'];
+
+if(isset($fileExport)) {
+    if(strcmp($fileExport, "csv") == 0) {
+        $filename = "test_postgres.csv";
+        $fp = fopen('php://output', 'w');
+
+        $query = "select column_name from information_schema.columns where table_name = 'events'";
+        $result = pg_query($conn,$query);
+        while ($row = pg_fetch_row($result)) {
+            $header[] = $row[0];
+        }	
+
+        header('Content-type: application/csv');
+        header('Content-Disposition: attachment; filename='.$filename);
+        fputcsv($fp, $header);
+
+        $query = "SELECT * FROM events WHERE user_id ='$username'";
+        $result = pg_query($conn, $query);
+        while($row = pg_fetch_row($result)) {
+            fputcsv($fp, $row);
+        }
+    }
 }
+
 ?>
