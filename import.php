@@ -163,11 +163,13 @@ if ( isset($_POST["submit"]) ) {
                                     $class_ID = data[0];
                                     $className = data[1];
                                     $location = data[2];
-                                    $start_time = data[3];
-                                    $end_time = data[4];
+                                    $start_time = date('Y-m-d H:i:s', strtotime(data[3]));
+                                    $end_time = date('Y-m-d H:i:s', strtotime(data[4]));
                                     $days = data[5];
                                     $teacher = data[6];
-                                    $query = "INSERT INTO class(class_ID, className, location, start_time, end_time, days, teacher) VALUES('".$class_ID."', '".className."', '".$location."', '".$start_time."', '".$end_time."', '".$days."', '".$teacher."')";
+                                    $start_date = date('Y-m-d', strtotime(data[7]));
+                                    $end_date = date('Y-m-d', strtotime(data[8]));
+                                    $query = "INSERT INTO class VALUES('$class_ID', '$className', '$location', '$start_time', '$end_time', '$days', '$teacher', '$start_date', '$end_date')";
     	                            $result_1 = pg_query($db_connection,$query);
                                 }
                                 fclose($handle);
@@ -181,10 +183,6 @@ if ( isset($_POST["submit"]) ) {
     } 
 }
 ?>
-
-
-        
-
 		<!-- Footer -->
 		<footer id="footer">
 			<ul class="icons">
