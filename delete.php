@@ -45,7 +45,7 @@
 					<!-- Text -->
 					<section class="box special">
 						<header class="major">
-							<h2>Organizations</h2>
+							<h2>Events</h2>
 							<p>
 								<?php
         session_start();
