@@ -162,6 +162,7 @@ if ( isset($_POST["submit"]) ) {
                                 $handle = fopen($target_file, "r");
                                 if($handle !== FALSE && $handle !== NULL){
                                     while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
+                                        print($data);
                                         $class_ID = $data[0];
                                         $className = $data[1];
                                         $location = $data[2];
