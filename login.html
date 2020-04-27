@@ -11,6 +11,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+	<style>
+		input[type=username], input[type=password] {
+			width: 190%;
+			padding: 8px 15px;
+			display: inline-block;
+			position: relative;
+			margin: 10px 30px;
+			border: 1px solid rgb(224, 222, 222);
+			border-radius: 4px;
+			box-sizing: border-box;
+			background-color: rgb(250, 250, 250);
+		}
+
+	</style>
 	<body class="is-preload">
 		<div id="page-wrapper">
 
@@ -36,10 +50,10 @@
 						<form method="post" action="log_in.php">
 							<div class="row gtr-100 gtr-uniform">
 								
-								<div class="col-12">
+								<div>
 									<input type="username" name="username" id="username" value="" placeholder="Username" required />
 								</div>
-								<div class="col-12">
+								<div>
 									<input type="password" name="password" id="password" value="" placeholder="Password" required />
 								</div>
 								<div class="col-12">

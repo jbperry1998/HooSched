@@ -119,32 +119,32 @@ FormStuff.init();
 				<h3>Name</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="text" name="name" id="name"
-						 value="" placeholder="Name of Event" />
+						 value="" placeholder="Name of Event" required />
 				</div>
 				<h3>Start Time</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="time" name="start_time" id="start_time"
-						pattern="(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)" value="" placeholder="00:00:00" />
+						pattern="(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)" value="" placeholder="00:00:00" required />
 						<p>HH:MM:SS</p>
 				</div>
 				<h3>End Time</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="time" name="end_time" id="end_time"
 						pattern="(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)" value=""
-						placeholder="00:00:00" />
+						placeholder="00:00:00" required />
 						<p>HH:MM:SS</p>
 				</div>
 				<h3>Date</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="date" name="date"
 						id="date" pattern="^\d{4}[\-\/\s]?((((0[13578])|(1[02]))[\-\/\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\-\/\s]?(([0-2][0-9])|(30)))|(02[\-\/\s]?[0-2][0-9]))$"
-						value="" placeholder="2020-04-20" />
+						value="" placeholder="2020-04-20" required />
 						<p>YYY-MM-DD</p>
 				</div>
 				<h3>Description</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="text" name="description" id="description"
-						 value="" placeholder="Description of Event" />
+						 value="" placeholder="Description of Event" required />
 				</div>
 				<!-- <h3>Frequency</h3>
 				<div class="col-6 col-12-mobilep">
