@@ -29,7 +29,7 @@
 			#$_SESSION['user_type'] = "admin";
 			#$_SESSION['org_id'] = $org_ID;
 			if(result_2){
-				header('Location: add.html');
+				header('Location: org.html');
 			}
 		}
 		else{
