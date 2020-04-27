@@ -119,7 +119,7 @@ $db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
 			header('Location: elements.html');
 		}
 
-$target_dir = "uploads/";
+$target_dir = "/Applications/XAMPP/xamppfiles/htdocs/GitHub/HooSched/uploads"; 
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -157,8 +157,8 @@ if ( isset($_POST["submit"]) ) {
                         // if everything is ok, try to upload file
                         } 
                         else{
-                            if (move_uploaded_file(($_FILES['fileToUpload'])['name'], $target_file)){
-                                #print(($target_file);
+                            if (move_uploaded_file(($_FILES['fileToUpload'])['tmp_name'], $target_file)){
+                                print($target_file);
                                 if($handle = fopen($target_file, "r") !== FALSE){
                                     while(($data = fgetcsv($handle)) !== FALSE){
                                         $class_ID = $data[0];
