@@ -112,7 +112,7 @@
 				<h3>Class ID</h3>
 				<div class="col-6 col-12-mobilep">
 					<input type="text" name="class_ID" id="class_ID"
-						pattern="[a-z]{3}\d{2}" value="" placeholder="class_ID" required />
+						 value="" placeholder="class_ID" required />
 					<p>3 lowercase letters followed by 2 numbers</p>
 				</div>
 				<div>
