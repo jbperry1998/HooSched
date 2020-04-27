@@ -119,7 +119,7 @@ $db_connection = pg_connect("host=ec2-174-129-227-80.compute-1.amazonaws.com
 			header('Location: elements.html');
 		}
 
-$target_dir = "/uploads/"; 
+$target_dir = "uploads/"; 
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -159,7 +159,7 @@ if ( isset($_POST["submit"]) ) {
                         else{
                             if (move_uploaded_file(($_FILES['fileToUpload'])['tmp_name'], $target_file)){
                                 print($target_file);
-                                if($handle = fopen($target_file, "r") !== FALSE){
+                                if($handle = fopen($target_file, "r") !== FALSE && $handle !== NULL){
                                     while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
                                         $class_ID = $data[0];
                                         $className = $data[1];
