@@ -156,7 +156,7 @@ if ( isset($_POST["submit"]) ) {
                         // if everything is ok, try to upload file
                         } 
                         else{
-                            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)){
+                            if (move_uploaded_file(($_FILES['fileToUpload'])['name'], $target_file)){
                                 #print(($_FILES['fileToUpload'])['name']);
                                 if($handle = fopen("CompSci1208Data copy.csv", "r") !== FALSE){
                                     while(($data = fgetcsv($handle)) !== FALSE){
@@ -173,13 +173,18 @@ if ( isset($_POST["submit"]) ) {
                                         $result_1 = pg_query($db_connection,$query);
                                         // CompSci1208Data copy.csv  ($_FILES['fileToUpload'])['name']
                                     }
+                                    fclose($handle);
+                                    print("Import Successful");
                                 }
-                                fclose($handle);
-                                print("Import Successful");
+                                else{
+                                    print("Import Failed");
+                                }
                             }
                             else{
                                 print("Import was not successful");
                             }
+                            }
+                            
                         } 
                     }
                 }
