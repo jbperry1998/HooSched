@@ -22,11 +22,11 @@
 		$eventArray[] = array(
 			'id'    => $row["class_id"],
 			'title' => $row["classname"],
-			'startTime' => $row["start_time"],
-			'endTime' => $row["end_time"],
-			'daysOfWeek' => $row["days"],
-			'startRecur' => $row["start_date"],
-			'endRecur' => $row["end_date"]
+			'start' => $row["start_time"],
+			'end' => $row["end_time"],
+			'dow' => $row["days"],
+			#'startRecur' => $row["start_date"],
+			#'endRecur' => $row["end_date"]
 		);
     }
 
