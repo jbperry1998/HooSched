@@ -21,7 +21,7 @@
 	foreach($result as $row) {
 		$eventArray[] = array(
 			'id'    => $row["class_id"],
-			'title' => $row["name"],
+			'title' => $row["classname"],
 			'start' => $row["start_time"],
 			'end' => $row["end_time"],
 			'daysOfWeek' => $row["days"],
