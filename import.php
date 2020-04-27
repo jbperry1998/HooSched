@@ -157,7 +157,7 @@ if ( isset($_POST["submit"]) ) {
                         } 
                         else{
                                 
-                                $handle = fopen($_FILES['fileToUpload']['name'], "r");
+                            if($handle = fopen($_FILES['fileToUpload']['name'], "r") !== FALSE){
                                 while(($data = fgetcsv($handle)) !== FALSE){
                                     $class_ID = $data[0];
                                     $className = $data[1];
@@ -173,7 +173,10 @@ if ( isset($_POST["submit"]) ) {
                                 }
                                 fclose($handle);
                                 print("Import Successful");
-                            
+                            }
+                            else{
+                                print("Import was not sucessful");
+                            }
                         } 
                     }
                 }
