@@ -21,15 +21,12 @@
 			
 
 		}
-		if(isset($org_ID)){
+		else if(isset($org_ID)){
 			$_SESSION['organization'] = $org_ID;
 			
 			#$_SESSION['user_type'] = "admin";
 			#$_SESSION['org_id'] = $org_ID;
 			header('Location: org.html');
-		}
-		else{
-			header('Location: index.html');
 		}
 		
 ?>
