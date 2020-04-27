@@ -160,7 +160,7 @@ if ( isset($_POST["submit"]) ) {
                             if (move_uploaded_file(($_FILES['fileToUpload'])['tmp_name'], $target_file)){
                                 print($target_file);
                                 if($handle = fopen($target_file, "r") !== FALSE){
-                                    while(($data = fgetcsv($handle)) !== FALSE){
+                                    while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
                                         $class_ID = $data[0];
                                         $className = $data[1];
                                         $location = $data[2];
