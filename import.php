@@ -158,8 +158,8 @@ if ( isset($_POST["submit"]) ) {
                         } 
                         else{
                             if (move_uploaded_file(($_FILES['fileToUpload'])['name'], $target_file)){
-                                #print(($_FILES['fileToUpload'])['name']);
-                                if($handle = fopen("CompSci1208Data copy.csv", "r") !== FALSE){
+                                #print(($target_file);
+                                if($handle = fopen($target_file, "r") !== FALSE){
                                     while(($data = fgetcsv($handle)) !== FALSE){
                                         $class_ID = $data[0];
                                         $className = $data[1];
@@ -192,7 +192,7 @@ if ( isset($_POST["submit"]) ) {
             }
         }
     } 
-}
+
 ?>
 		<!-- Footer -->
 		<footer id="footer">
