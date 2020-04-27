@@ -9,8 +9,8 @@
 		}
 		$user_ID = $_SESSION['username'];
 		// $name = $_SESSION['name'];
-		
-		$org_ID = $_POST['org_ID'];
+
+		$org_ID = $_SESSION['organization'];
 		$name = $_POST['name'];
         $field = $_POST['field'];	
         
