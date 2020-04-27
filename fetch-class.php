@@ -24,7 +24,7 @@
 			'title' => $row["classname"],
 			'start' => $row["start_time"],
 			'end' => $row["end_time"],
-			'dow' => $row["days"],
+			'dow' => $row["days"]
 			#'startRecur' => $row["start_date"],
 			#'endRecur' => $row["end_date"]
 		);
