@@ -12,7 +12,7 @@
     $eventArray = array();
 	
 	// prepare execute the query
-    $query = "SELECT * FROM classes WHERE class_ID IN (SELECT class_ID FROM takes WHERE user_ID = '$user_ID')";
+    $query = "SELECT * FROM class WHERE class_ID IN (SELECT class_ID FROM takes WHERE user_ID = '$user_ID')";
 	$statement = pg_query($db_connection, $query);
 	
 	// fetch all rows from statement as an array 
@@ -22,11 +22,11 @@
 		$eventArray[] = array(
 			'id'    => $row["class_id"],
 			'title' => $row["classname"],
-			'start' => $row["start_time"],
-			'end' => $row["end_time"],
-			'daysOfWeek' => $row["days"]
-			#'startRecur' => $row["start_date"],
-			#'endRecur' => $row["end_date"]
+			'startTime' => $row["start_time"],
+			'endTime' => $row["end_time"],
+			'daysOfWeek' => $row["days"],
+			'startRecur' => $row["start_date"],
+			'endRecur' => $row["end_date"]
 		);
     }
 
