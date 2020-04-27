@@ -17,9 +17,7 @@
 			//insert username and school into students table
 			$query_1 = "INSERT INTO student VALUES('$user_ID','$school')";
 			$result_1 = pg_query($db_connection,$query_1);
-			if(result_1){
-				header('Location: rescalendar.html');
-			}
+			header('Location: rescalendar.html');
 			
 
 		}
@@ -28,9 +26,7 @@
 			
 			#$_SESSION['user_type'] = "admin";
 			#$_SESSION['org_id'] = $org_ID;
-			if(result_2){
-				header('Location: org.html');
-			}
+			header('Location: org.html');
 		}
 		else{
 			header('Location: index.html');
