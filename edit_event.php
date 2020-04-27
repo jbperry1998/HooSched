@@ -47,7 +47,7 @@ if(isset($description)) {
   $sqlUpdate = "UPDATE events SET description='$description' WHERE event_id='$event_id' AND user_id='$user_ID'";
   $r = pg_query($db_connection, $sqlUpdate);
 }
-
+pg_close($db_connection);
 header('Location: rescalendar.html');
 // mysqli_query($conn, $sqlUpdate)
 // mysqli_close($conn);

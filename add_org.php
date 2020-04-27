@@ -20,6 +20,7 @@
 		$result_3 = pg_query($db_connection, $query_3);
 		$query_2 = "INSERT INTO admin VALUES('$org_ID','$user_ID')";
 		$result_2 = pg_query($db_connection,$query_2);
+		pg_close($db_connection);
 		header('Location: rescalendar.html');
 
 ?>

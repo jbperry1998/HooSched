@@ -14,6 +14,7 @@
 		$q = "INSERT INTO subscribes VALUES('$org_ID','$user_ID')";
 		$r = pg_query($db_connection, $q);//should get the event from events
 
-
+		pg_close($db_connection);
 		header('Location: rescalendar.html');
+		
 ?>

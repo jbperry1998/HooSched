@@ -88,7 +88,7 @@
             }
         }
         echo "</table>";
-        // pg_close($db_connection);
+        pg_close($db_connection);
         ?>
 							</p>
 						</header>

@@ -17,7 +17,7 @@
 		$r1 = pg_query($db_connection, $q);
 		$q2 = "DELETE FROM extracurricular WHERE  event_id ='$event_ID' AND user_id = '$user_ID'";
 		$r2 = pg_query($db_connection, $q);
-
+		pg_close($db_connection);
 
 		header('Location: rescalendar.html');
 ?>

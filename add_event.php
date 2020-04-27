@@ -70,4 +70,6 @@
 		$result_3 = pg_query($db_connection, $query_3);
 		header('Location: rescalendar.html');
 
+		pg_close($db_connection);
+
 ?>

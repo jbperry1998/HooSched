@@ -28,6 +28,7 @@ if (password_verify($password, $hp)) {
     echo $password;
     header('Location: bad_login.html');
 }
+pg_close($db_connection);
 
 // if(!$user) {
 
