@@ -12,8 +12,11 @@
 		// $name = $_SESSION['name'];
 		$event_ID = $_POST['event_ID'];
 		$q = "DELETE FROM events WHERE  event_id ='$event_ID' AND user_id = '$user_ID'";
-		
 		$r = pg_query($db_connection, $q);
+		$q1 = "DELETE FROM community WHERE  event_id ='$event_ID' AND user_id = '$user_ID'";
+		$r1 = pg_query($db_connection, $q);
+		$q2 = "DELETE FROM extracurricular WHERE  event_id ='$event_ID' AND user_id = '$user_ID'";
+		$r2 = pg_query($db_connection, $q);
 
 
 		header('Location: rescalendar.html');
