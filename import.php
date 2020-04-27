@@ -159,7 +159,8 @@ if ( isset($_POST["submit"]) ) {
                         else{
                             if (move_uploaded_file(($_FILES['fileToUpload'])['tmp_name'], $target_file)){
                                 print($target_file);
-                                if($handle = fopen($target_file, "r") !== FALSE && $handle !== NULL){
+                                $handle = fopen($target_file, "r");
+                                if($handle !== FALSE && $handle !== NULL){
                                     while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
                                         $class_ID = $data[0];
                                         $className = $data[1];
@@ -192,7 +193,7 @@ if ( isset($_POST["submit"]) ) {
             }
         }
     } 
-pg_clost($db_connection)
+#pg_clost($db_connection)
 ?>
 		<!-- Footer -->
 		<footer id="footer">
