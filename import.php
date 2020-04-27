@@ -35,7 +35,7 @@ if ( isset($_POST["submit"]) ) {
                 }
                 else{
                     // Allow certain file formats
-                    if($imageFileType != "CSV") {
+                    if($fileType != "csv") {
                         echo "Sorry, only csv files are allowed.";
                         $uploadOk = 0;
                     }
