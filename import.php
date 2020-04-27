@@ -46,10 +46,8 @@ if ( isset($_POST["submit"]) ) {
                         // if everything is ok, try to upload file
                         } 
                         else{
-                            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                                echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 
-                                $handle = fopen($target_file, "r");
+                                $handle = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
                                 while($data = fgetcsv($handle)){
                                     $class_ID = data[0];
                                     $className = data[1];
@@ -63,11 +61,7 @@ if ( isset($_POST["submit"]) ) {
                                 }
                                 fclose($handle);
                                 print("Import Successful");
-                            }
                             
-                            else {
-                                echo "Sorry, there was an error uploading your file.";
-                            }
                         } 
                     }
                 }
