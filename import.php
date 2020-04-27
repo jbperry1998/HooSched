@@ -156,26 +156,29 @@ if ( isset($_POST["submit"]) ) {
                         // if everything is ok, try to upload file
                         } 
                         else{
-                            print(($_FILES['fileToUpload'])['name']);
-                            if($handle = fopen(($_FILES['fileToUpload'])['name'], "r") !== FALSE){
-                                while(($data = fgetcsv($handle)) !== FALSE){
-                                    $class_ID = $data[0];
-                                    $className = $data[1];
-                                    $location = $data[2];
-                                    $start_time = date('Y-m-d H:i:s', strtotime($data[3]));
-                                    $end_time = date('Y-m-d H:i:s', strtotime($data[4]));
-                                    $days = $data[5];
-                                    $teacher = $data[6];
-                                    $start_date = date('Y-m-d', strtotime($data[7]));
-                                    $end_date = date('Y-m-d', strtotime($data[8]));
-                                    $query = "INSERT INTO class VALUES('$class_ID', '$className', '$location', '$start_time', '$end_time', '$days', '$teacher', '$start_date', '$end_date')";
-    	                            $result_1 = pg_query($db_connection,$query);
+                            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)){
+                                #print(($_FILES['fileToUpload'])['name']);
+                                if($handle = fopen("CompSci1208Data copy.csv", "r") !== FALSE){
+                                    while(($data = fgetcsv($handle)) !== FALSE){
+                                        $class_ID = $data[0];
+                                        $className = $data[1];
+                                        $location = $data[2];
+                                        $start_time = date('H:i:s', strtotime($data[3]));
+                                        $end_time = date('H:i:s', strtotime($data[4]));
+                                        $days = $data[5];
+                                        $teacher = $data[6];
+                                        $start_date = date('Y-m-d', strtotime($data[7]));
+                                        $end_date = date('Y-m-d', strtotime($data[8]));
+                                        $query = "INSERT INTO class VALUES('$class_ID', '$className', '$location', '$start_time', '$end_time', '$days', '$teacher', '$start_date', '$end_date')";
+                                        $result_1 = pg_query($db_connection,$query);
+                                        // CompSci1208Data copy.csv  ($_FILES['fileToUpload'])['name']
+                                    }
                                 }
                                 fclose($handle);
                                 print("Import Successful");
                             }
                             else{
-                                print("Import was not sucessful");
+                                print("Import was not successful");
                             }
                         } 
                     }
