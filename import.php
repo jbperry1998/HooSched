@@ -156,9 +156,9 @@ if ( isset($_POST["submit"]) ) {
                         // if everything is ok, try to upload file
                         } 
                         else{
-
+                                
                                 $handle = fopen($_FILES['fileToUpload']['name'], "r");
-                                while($data = fgetcsv($handle)){
+                                while(($data = fgetcsv($handle)) !== FALSE){
                                     print($data[0]);
                                     $class_ID = $data[0];
                                     $className = $data[1];
